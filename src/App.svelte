@@ -1,12 +1,10 @@
 <script>
-import {searchRegex} from "./stores/Search";
-import {currTab} from "./stores/Tab";
+import MainContainer from "./layouts/MainContainer.svelte";
 
-$: console.log($searchRegex);
-$: console.log($currTab);
 </script>
 
 <main>
+	<MainContainer />
 </main>
 
 <style>
