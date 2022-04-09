@@ -22,7 +22,7 @@
             </span>
         {/key}
         
-        <input bind:value={search} placeholder={`Search ${$currTab}`}/>
+        <input bind:value={search} placeholder={`Search for ${$currTab}`}/>
     </div>
 </div>
 

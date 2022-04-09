@@ -1,5 +1,5 @@
 <script>
-import ItemsContainer from "./ItemsContainer.svelte";
+import ItemsContainer from "./ItemsContainer/ItemsContainer.svelte";
 import LeftBar from "./LeftBar/LeftBar.svelte";
 import SearchBar from "./SearchBar.svelte";
 import ShoppingList from "./ShoppingList.svelte";

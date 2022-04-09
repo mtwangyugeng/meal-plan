@@ -4,9 +4,24 @@
 
 <div class="User">
 {#if $token == ""}
-    <button>Sign In</button>
+    <button class="SignIn">Sign In</button>
 {:else}
     <button>Logout</button>
     <div>{$user.email}</div>
 {/if}
 </div>
+
+
+<style>
+    .SignIn {
+        width: 80px;
+        height: 40px;
+        background-color: lightblue;
+        border-radius: 10px;
+    }
+
+    button:hover {
+        filter: brightness(120%);
+    }
+
+</style>
