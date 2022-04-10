@@ -6,7 +6,7 @@
     import IngredientIcon from "$src/assets/IngredientIcon.svelte"
     import RecipeIcon from "$src/assets/RecipeIcon.svelte"
 
-    import {TABS, currTab} from "$src/stores/Tab"
+    import {currTab} from "$src/stores/Tab"
     import { fly } from 'svelte/transition';
 </script>
 

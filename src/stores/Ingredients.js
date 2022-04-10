@@ -1,4 +1,4 @@
-import {writable} from "svelte/store"
+import {writable, get} from "svelte/store"
 
 export const ingredients = writable(
     [{
@@ -16,4 +16,9 @@ export const ingredients = writable(
         amount: 1,
         price: 1000,
         store: 'Costco'
-    }])
+    }]);
+
+export const getIngredientById = (id) => {
+    const res = get(ingredients).find(ingredient => ingredient.id == id);
+    return res;
+}

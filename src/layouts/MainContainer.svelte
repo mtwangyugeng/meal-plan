@@ -2,7 +2,7 @@
 import ItemsContainer from "./ItemsContainer/ItemsContainer.svelte";
 import LeftBar from "./LeftBar/LeftBar.svelte";
 import SearchBar from "./SearchBar.svelte";
-import ShoppingList from "./ShoppingList.svelte";
+import ShoppingList from "./ShoppingList/ShoppingList.svelte";
 
 
 </script>

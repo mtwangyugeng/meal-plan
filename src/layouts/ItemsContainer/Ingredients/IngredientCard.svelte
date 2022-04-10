@@ -9,7 +9,8 @@
 
 
 <div class="Card">
-    <h3>#{id} {name}</h3>
+    <h3>{name}</h3>
+    <i>#{id}</i>
     <p>Store: {store}</p>
     <p>Package: {amount} {unit} / ${(price/100.00).toFixed(2)}</p>
 </div>
