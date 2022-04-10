@@ -2,6 +2,7 @@
     import { ingredients } from "$src/stores/Ingredients";
     import IngredientCard from "$src/layouts/ItemsContainer/Ingredients/IngredientCard.svelte";
     import { fly } from 'svelte/transition';
+    import { removeListItem } from "$src/stores/ShoppingList";
 
     export let id;
     export let ingredient_id;
@@ -9,11 +10,10 @@
 
     $: ingredient = $ingredients[ingredient_id]
 
-    console.log(ingredient_id, amount)
 </script>
 
 <div class="ListItem">
-    <IngredientCard {...ingredient} on:click={()=>console.log("good")}/>
+    <IngredientCard {...ingredient} on:click={()=>removeListItem(ingredient_id)}/>
     x 
     {#key amount}
     <span style="display: inline-block" in:fly={{ y: -20 }}>

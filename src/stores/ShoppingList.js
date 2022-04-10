@@ -27,3 +27,15 @@ export const addListItem = (ingredient_id, amount=1) => {
         listItems.set(neo);
     }
 }
+
+export const removeListItem = (ingredient_id, amount=1) => {
+    const neo = get(listItems)
+    neo[ingredient_id]["amount"] -= amount;
+    
+
+    if (neo[ingredient_id]["amount"] == 0) {
+        delete neo[ingredient_id];
+    }
+
+    listItems.set(neo);
+}

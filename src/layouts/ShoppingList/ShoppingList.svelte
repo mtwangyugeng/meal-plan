@@ -1,8 +1,8 @@
 <script>
 
 import { listItems } from "$src/stores/ShoppingList";
-import { flip } from 'svelte/animate';
-import { fly } from 'svelte/transition';
+import {fly} from 'svelte/transition';
+import { quintOut } from "svelte/easing";
 import ListItem from "./ListItem.svelte";
 
 $: listItemValues= Object.values($listItems)
@@ -22,12 +22,12 @@ $: total = listItemValues.reduce((total, v)=>{
 
         <div class="ListItems">
         {#each listItemValues as listItem (listItem.id)}
-            <span animate:flip="{{duration: 200}}">
+            <span transition:fly={{ delay: 0, duration: 200, easing: quintOut }}>
                 <ListItem {...listItem} />
             </span>
         {/each}
         </div>
-        <div>
+        <div class="Total">
             Total: $
             {#key total}
             <span style="display: inline-block" in:fly={{ y: -20 }}>
@@ -54,6 +54,12 @@ $: total = listItemValues.reduce((total, v)=>{
         background-color: grey;
         height: 100%;
     }
-
+    .Total {
+        background-color: orange;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
 </style>
