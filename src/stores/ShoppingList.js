@@ -10,3 +10,20 @@ export const listItems = writable({
     }
 });
 
+let id = 2;
+export const addListItem = (ingredient_id, amount=1) => {
+    const neo = get(listItems)
+    if (neo[ingredient_id]) {
+        neo[ingredient_id]["amount"] += amount;
+        listItems.set(neo);
+    }else {
+        const newValue = {
+            id: id++,
+            ingredient_id: ingredient_id,
+            amount: amount
+        }
+        neo[ingredient_id] = newValue;
+        console.log(neo)
+        listItems.set(neo);
+    }
+}

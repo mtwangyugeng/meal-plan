@@ -12,7 +12,6 @@ import { ingredients } from "$src/stores/Ingredients";
 $: total = listItemValues.reduce((total, v)=>{
     return total + v.amount * $ingredients[v.ingredient_id]["price"];
 }, 0)
-
 </script>
 
 <div class="ShoppingList">

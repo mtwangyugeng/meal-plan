@@ -8,10 +8,12 @@
     export let amount;
 
     $: ingredient = $ingredients[ingredient_id]
+
+    console.log(ingredient_id, amount)
 </script>
 
 <div class="ListItem">
-    <IngredientCard {...ingredient} />
+    <IngredientCard {...ingredient} on:click={()=>console.log("good")}/>
     x 
     {#key amount}
     <span style="display: inline-block" in:fly={{ y: -20 }}>

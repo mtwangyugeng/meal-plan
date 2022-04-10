@@ -5,10 +5,11 @@
     export let amount;
     export let unit;
     export let price;
+
 </script>
 
 
-<div class="Card">
+<div class="Card" on:click >
     <h3>{name}</h3>
     <i>#{id}</i>
     <p>Store: {store}</p>
@@ -22,5 +23,21 @@
     }
     .Card > h3 {
         text-align: center;
+    }
+
+    :global(.Card) {
+        /* background-color: white; */
+        width: 180px;
+        height: 100px;
+        padding: 10px;
+        border-radius: 10px;
+        margin: 10px;
+
+        cursor: pointer;
+        user-select: none;
+    }
+
+    :global(.Card):hover {
+        filter:brightness(90%);
     }
 </style>
