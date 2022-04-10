@@ -1,7 +1,18 @@
+<script>
+    import PopoutMessage from "$src/layouts/_PopoutMessage.svelte";
 
-<button class="Card">
+    let adding = false;
+</script>
+
+<button class="Card" on:click={()=>adding=true}>
     <div>+</div>
 </button>
+
+{#if adding}
+    <PopoutMessage on:click={()=>adding=false}>
+        
+    </PopoutMessage>
+{/if}
 
 <style>
     button {

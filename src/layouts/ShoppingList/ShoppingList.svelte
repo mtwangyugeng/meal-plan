@@ -40,6 +40,9 @@ $: total = listItemValues.reduce((total, v)=>{
 
 
 <style>
+    .ShoppingList {
+        z-index: 3;
+    }
     .container {
         display: flex;
         flex-direction: column;
