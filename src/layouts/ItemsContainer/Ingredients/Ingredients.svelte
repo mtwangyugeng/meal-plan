@@ -5,10 +5,11 @@ import { flip } from 'svelte/animate';
 import { ingredients } from "$src/stores/Ingredients";
 import IngredientCard from "./IngredientCard.svelte";
 
+$: ingreidentValues = Object.values($ingredients);
 </script>
 
 <section>
-{#each $ingredients.filter(v => $searchRegex.test(v.name)) as ingredient (ingredient.id)}
+{#each ingreidentValues.filter(v => $searchRegex.test(v.name)) as ingredient (ingredient.id)}
     <span animate:flip="{{duration: 200}}">
         <IngredientCard {...ingredient} />
     </span>
@@ -23,7 +24,7 @@ import IngredientCard from "./IngredientCard.svelte";
         display: flex;
         flex-wrap: wrap;
     }
-    section :global(.Card) {
+    :global(.Card) {
         /* background-color: white; */
         width: 180px;
         height: 100px;

@@ -1,9 +1,12 @@
-import {writable} from "svelte/store"
+import {writable, get} from "svelte/store"
 
-export const listItems = writable([
-    {
+
+// key: ingredient_id
+export const listItems = writable({
+    1: {
         id: 1,
         ingredient_id: 1,
         amount: 2
     }
-]);
+});
+
