@@ -1,4 +1,5 @@
 <script>
+import Footer from "./Footer.svelte";
 import ItemsContainer from "./ItemsContainer/ItemsContainer.svelte";
 import LeftBar from "./LeftBar/LeftBar.svelte";
 import SearchBar from "./SearchBar.svelte";
@@ -12,6 +13,7 @@ import ShoppingList from "./ShoppingList/ShoppingList.svelte";
     <div class="MidContainer">
         <SearchBar />
         <ItemsContainer />
+        <Footer />
     </div>
     <ShoppingList />
 </section>

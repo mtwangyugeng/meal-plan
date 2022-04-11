@@ -1,6 +1,6 @@
 <script>
     import PopoutMessage from "$src/layouts/_PopoutMessage.svelte";
-    import FormAddIngredient from "./FormAddIngredient.svelte";
+    import FormAddIngredient from "./FormIngredient.svelte";
 
     let adding = false;
 </script>
@@ -11,7 +11,7 @@
 
 {#if adding}
     <PopoutMessage >
-            <FormAddIngredient on:click={()=>adding=false}/>
+            <FormAddIngredient on:click={()=>adding=false} title="Add Ingredient"/>
     </PopoutMessage>
 {/if}
 

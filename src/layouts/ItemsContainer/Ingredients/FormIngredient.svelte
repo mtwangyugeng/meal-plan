@@ -2,7 +2,7 @@
 
 import IngredientCard from "./IngredientCard.svelte";
 
-let imp = {
+export let ingreident = {
     id: "",
     name: "",
     unit: "",
@@ -10,21 +10,22 @@ let imp = {
     price: '',
     store: ''
 }
+export let title = "Ingreident From";
 </script>
 
 
 <div class="container">
     <div class="cross" on:click>x</div>
-    <h2>Add a new ingredient</h2>
-    <IngredientCard {...imp}/>
+    <h2>{title}</h2>
+    <IngredientCard {...ingreident}/>
 
     <form>
-        <input bind:value={imp.name} placeholder="Enter Name"/>
-        <input bind:value={imp.store} placeholder="Enter Store"/>
+        <input bind:value={ingreident.name} placeholder="Enter Name"/>
+        <input bind:value={ingreident.store} placeholder="Enter Store"/>
 
         <div class="Package">
-            <input type="number" bind:value={imp.amount} placeholder="Enter Package Size"/>
-            <select bind:value={imp.unit} required>
+            <input type="number" bind:value={ingreident.amount} placeholder="Enter Package Size"/>
+            <select bind:value={ingreident.unit} required>
                 <optgroup label="Volumn">
                 <option value="ml">ml</option>
                 <option value="L">L</option>
@@ -37,7 +38,7 @@ let imp = {
                     <option value="peice">peice</option>
                 </optgroup>
             </select>
-            <input type="number" bind:value={imp.price} placeholder="Enter Price"/>
+            <input type="number" bind:value={ingreident.price} placeholder="Enter Price in Cent"/>
         </div>
         
         <input type="submit" value="Add Ingredient" />
