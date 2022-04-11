@@ -78,8 +78,10 @@ let imp = {
         display: flex;
     }
 
-    h3 {
+    h2 {
         text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+        color:rgb(119, 79, 3)
     }
 
     form {
@@ -100,8 +102,12 @@ let imp = {
     }
 
     input[type="submit"] {
-        background-color: orange;
+        background-color: rgb(216, 141, 3);
         padding: 20px;
         margin-top: 20px;
+        color: white;
+    }
+    input[type="submit"]:hover {
+        background-color: orange
     }
 </style>
