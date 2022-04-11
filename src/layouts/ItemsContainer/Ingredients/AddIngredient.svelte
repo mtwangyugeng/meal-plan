@@ -11,7 +11,7 @@
 
 {#if adding}
     <PopoutMessage >
-            <FormAddIngredient on:click={()=>adding=false} title="Add Ingredient"/>
+        <FormAddIngredient on:click={()=>adding=false} title="Add Ingredient"/>
     </PopoutMessage>
 {/if}
 

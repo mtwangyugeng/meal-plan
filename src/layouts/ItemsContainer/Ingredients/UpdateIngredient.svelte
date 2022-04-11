@@ -7,9 +7,9 @@ import FormIngredient from "./FormIngredient.svelte";
     let updating = false;
 </script>
 
-<div class="UpdateIngredient" on:click={()=>updating = true}>
+<button class="UpdateIngredient" on:click={()=>updating = true}>
     <UpdateIcon />
-</div>
+</button>
 
 {#if updating}
     <PopoutMessage>
@@ -18,10 +18,9 @@ import FormIngredient from "./FormIngredient.svelte";
 {/if}
 
 <style>
-    .UpdateIngredient {
-        cursor: pointer;
+    .UpdateIngredient:hover {
+        opacity: 0.7;
     }
-
     .UpdateIngredient :global(svg){
         width: 30px;
         height: 30px;

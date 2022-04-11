@@ -13,7 +13,7 @@
         height: 100vh;
         background-color: rgba(0, 0, 0, 0.438);
 
-        z-index: 0;
+        z-index: 3;
 
         display: flex;
         align-items: center;

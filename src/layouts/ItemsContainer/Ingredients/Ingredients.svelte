@@ -9,6 +9,7 @@ $: ingreidentValues = Object.values($ingredients);
 
 import { addListItem } from "$src/stores/ShoppingList";
 import UpdateIngredient from "./UpdateIngredient.svelte";
+import DeleteIngredient from "./DeleteIngredient.svelte";
 </script>
 
 <section>
@@ -19,7 +20,7 @@ import UpdateIngredient from "./UpdateIngredient.svelte";
         
         <div class="Options">
             <UpdateIngredient ingredient={ingredient} />
-            <div>Delete</div>
+            <DeleteIngredient />
         </div>
 
         </div>        
@@ -40,15 +41,19 @@ import UpdateIngredient from "./UpdateIngredient.svelte";
     }
     .Options{
         position: absolute;
-        top:20px;
-        right: -30px;
-        /* opacity: 0; */
+        bottom: -30px;
+        right: 0px;
+        display: none;
         user-select: none;
-        z-index: 99;
-        background-color: #fff;
+        z-index: 2;
+
+        width: 100%;
+        /* display: flex; */
+        /* background-color: #fff; */
     }
     .CardWrapper:hover .Options {
-        opacity: 1;
+        display: flex;
+        justify-content: flex-end;
     }
 
 
