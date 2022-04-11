@@ -1,5 +1,5 @@
 
-<div class="PopoutMessage" on:click>
+<div class="PopoutMessage">
     <slot />
 </div>
 
