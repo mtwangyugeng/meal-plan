@@ -10,6 +10,16 @@ $: ingreidentValues = Object.values($ingredients);
 import { addListItem } from "$src/stores/ShoppingList";
 import UpdateIngredient from "./UpdateIngredient.svelte";
 import DeleteIngredient from "./DeleteIngredient.svelte";
+
+
+import PopoutMessage from "$src/layouts/_PopoutMessage.svelte";
+import FormIngredient from "./FormIngredient.svelte";
+import AskDelete from "./AskDeleteIngredient.svelte";
+
+    let updating = false;
+    let currIngredient = null;
+
+    let deleting = false;
 </script>
 
 <section>
@@ -19,8 +29,8 @@ import DeleteIngredient from "./DeleteIngredient.svelte";
         <IngredientCard {...ingredient} on:click={()=>addListItem(ingredient.id)}/>
         
         <div class="Options">
-            <UpdateIngredient ingredient={ingredient} />
-            <DeleteIngredient />
+            <UpdateIngredient on:click={()=>{updating=true; currIngredient = {...ingredient}}}/>
+            <DeleteIngredient on:click={()=>{deleting=true;}} />
         </div>
 
         </div>        
@@ -30,6 +40,18 @@ import DeleteIngredient from "./DeleteIngredient.svelte";
 <AddIngredient />
 </section>
 
+{#if updating}
+    <PopoutMessage>
+        <FormIngredient ingreident={currIngredient} on:click={()=>updating=false} title="Update Ingredient"/>
+    </PopoutMessage>
+{/if}
+
+
+{#if deleting}
+    <PopoutMessage>
+        <AskDelete close={()=>{deleting=false}}/>
+    </PopoutMessage>
+{/if}
 
 <style>
     section {
@@ -57,4 +79,5 @@ import DeleteIngredient from "./DeleteIngredient.svelte";
     }
 
 
+    
 </style>
