@@ -25,7 +25,7 @@ import { currRecipe } from "$src/stores/Recipes";
 
 <style>
     button {
-        width: 100px;
+        /* width: 100px; */
         background-color: yellow;
         text-align: left;
         padding: 10px 3px;
@@ -48,6 +48,6 @@ import { currRecipe } from "$src/stores/Recipes";
     }
 
     .Activated {
-        background-color: red;
+        background-color: rgb(0, 255, 13);
     }
 </style>
