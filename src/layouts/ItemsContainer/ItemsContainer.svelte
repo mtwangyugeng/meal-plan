@@ -1,6 +1,7 @@
 <script>
 import { currTab } from "$src/stores/Tab";
 import Ingredients from "./Ingredients/Ingredients.svelte";
+import Recipes from "./Recipes/Recipes.svelte";
 
 </script>
 
@@ -8,7 +9,7 @@ import Ingredients from "./Ingredients/Ingredients.svelte";
     {#if $currTab == "Ingredients"}
         <Ingredients />
     {:else if $currTab == "Recipes"}
-        Recipes
+        <Recipes />
     {/if}
 </div>
 
