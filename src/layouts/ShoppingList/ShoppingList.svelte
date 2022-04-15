@@ -7,7 +7,7 @@ import ListItem from "./ListItem.svelte";
 
 import { ingredients } from "$src/stores/Ingredients";
 
-$: listItemValues= Object.values($listItems)
+$: listItemValues= Object.values($listItems);
 $: listItemValues.sort((a,b)=> {       
     if ( $ingredients[a.ingredient_id].store < $ingredients[b.ingredient_id]){
         return 1;
@@ -16,13 +16,12 @@ $: listItemValues.sort((a,b)=> {
         return -1;
     }
     return 0;
-})
-// $:console.log(listItemValues)
+});
 
 
 $: total = listItemValues.reduce((total, v)=>{
     return total + v.amount * $ingredients[v.ingredient_id]["price"];
-}, 0)
+}, 0);
 </script>
 
 <div class="ShoppingList">
