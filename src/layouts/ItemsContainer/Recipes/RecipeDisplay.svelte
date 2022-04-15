@@ -42,7 +42,7 @@ $: recipe = $recipes[$currRecipe]
 
 <style>
     section {
-        background-color: rgb(0, 255, 13);
+        background-color: rgb(255, 208, 106);
         width: 100%;
         padding: 10px;
         display: flex;

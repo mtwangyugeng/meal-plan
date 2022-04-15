@@ -57,6 +57,7 @@ import AskDelete from "./AskDeleteIngredient.svelte";
     section {
         display: flex;
         flex-wrap: wrap;
+        justify-content: center;
     }
     .CardWrapper {
         position: relative;

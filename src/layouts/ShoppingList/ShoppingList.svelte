@@ -50,21 +50,23 @@ $: total = listItemValues.reduce((total, v)=>{
 
 
 <style>
-    /* .ShoppingList {
-        z-index: 3;
-    } */
+    .ShoppingList {
+        padding: 10px;
+    }
     .container {
+        border-radius: 10px;
         display: flex;
         flex-direction: column;
-        background-color: red;
+        background-color: rgb(255, 218, 148);
         height: 100%;
     }
     h2 {
-        text-align: center
+        text-align: center;
+        /* color: white; */
     }
 
     .ListItems {
-        background-color: grey;
+        /* background-color: grey; */
         height: 100%;
     }
     .Total {

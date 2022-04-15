@@ -1,6 +1,7 @@
 <script>
 import { recipes } from "$src/stores/Recipes";
 import { searchRegex } from "$src/stores/Search";
+import { flip } from "svelte/animate";
 import RecipeCard from "./RecipeCard.svelte";
 import RecipeDisplay from "./RecipeDisplay.svelte";
 
@@ -14,7 +15,9 @@ $: recipeValues = Object.values($recipes);
     <div class="RecipeList">
         <h3>Recipes</h3>
         {#each recipeValues.filter(v => $searchRegex.test(v.name) ) as recipe (recipe.id)}
+        <span animate:flip="{{duration: 200}}">
             <RecipeCard {...recipe}/>
+        </span>
         {/each}
     </div>
     <RecipeDisplay />
