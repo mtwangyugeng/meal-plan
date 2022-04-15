@@ -24,35 +24,35 @@ import ShoppingList from "./ShoppingList/ShoppingList.svelte";
         display: flex;
         /* justify-content: space-between; */
 
-        background-color: black;
+        background-color: rgb(252, 190, 110);
         height: 100%;
         width: 100%;
     }
 
     section > :global(.LeftBar) {
-        background-color: grey;
+        /* background-color: grey; */
         width: 150px;
     }
 
     section > :global(.ShoppingList) {
-        background-color: lightblue;
+        /* background-color: lightblue; */
         width: 400px;
     }
 
     .MidContainer {
-        background-color: lightgrey;
+        /* background-color: lightgrey; */
         width: 100%;
         display: flex;
         flex-direction: column;
     }
 
     .MidContainer > :global(.SearchBar) {
-        background-color: pink;
+        /* background-color: pink; */
         height: 100px;
     }
 
     .MidContainer > :global(.ItemsContainer) {
-        background-color: lightgreen;
+        /* background-color: lightgreen; */
         height: 100%;
         overflow: auto;
     }

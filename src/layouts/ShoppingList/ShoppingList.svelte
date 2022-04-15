@@ -5,9 +5,20 @@ import {fly} from 'svelte/transition';
 import { quintOut } from "svelte/easing";
 import ListItem from "./ListItem.svelte";
 
-$: listItemValues= Object.values($listItems)
-
 import { ingredients } from "$src/stores/Ingredients";
+
+$: listItemValues= Object.values($listItems)
+$: listItemValues.sort((a,b)=> {       
+    if ( $ingredients[a.ingredient_id].store < $ingredients[b.ingredient_id]){
+        return 1;
+    }
+    if ( $ingredients[a.ingredient_id].store > $ingredients[b.ingredient_id] ){
+        return -1;
+    }
+    return 0;
+})
+// $:console.log(listItemValues)
+
 
 $: total = listItemValues.reduce((total, v)=>{
     return total + v.amount * $ingredients[v.ingredient_id]["price"];

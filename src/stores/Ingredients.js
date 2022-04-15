@@ -18,6 +18,14 @@ export const ingredients = writable(
             amount: 1,
             price: 1000,
             store: 'Costco'
+        },
+        3: {
+            id: 3,
+            name: 'Wine',
+            unit: 'L',
+            amount: 1,
+            price: 1000,
+            store: 'B & B'
         }
     }
     );

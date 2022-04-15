@@ -13,9 +13,9 @@ $: recipeValues = Object.values($recipes);
 <section>
     <div class="RecipeList">
         <h3>Recipes</h3>
-    {#each recipeValues.filter(v => $searchRegex.test(v.name) ) as recipe (recipe.id)}
-        <RecipeCard {...recipe}/>
-    {/each}
+        {#each recipeValues.filter(v => $searchRegex.test(v.name) ) as recipe (recipe.id)}
+            <RecipeCard {...recipe}/>
+        {/each}
     </div>
     <RecipeDisplay />
 </section>
@@ -35,6 +35,18 @@ $: recipeValues = Object.values($recipes);
         padding: 10px 3px;
         border-radius: 10px;
     }
+/* 
+    @media only screen and (max-width: 1000px) {
+        section {
+            flex-direction: column;
+            
+        }
+        .RecipeList {
+            background-color: lightblue;
+            flex-direction: row;
+            height: auto
+        }
+    } */
 
     h3 {
         text-align: center;

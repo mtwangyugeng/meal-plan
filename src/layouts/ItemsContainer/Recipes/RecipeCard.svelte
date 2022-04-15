@@ -28,7 +28,8 @@ import { currRecipe } from "$src/stores/Recipes";
         /* width: 100px; */
         background-color: yellow;
         text-align: left;
-        padding: 10px 3px;
+        padding: 10px 30px 10px 5px;
+        width: 100px;
         position: relative;
     }
 
