@@ -1,6 +1,6 @@
 <script>
 import Tabs from "./Tabs.svelte";
-import User from "./User.svelte";
+import User from "./User/User.svelte";
 
 
 </script>

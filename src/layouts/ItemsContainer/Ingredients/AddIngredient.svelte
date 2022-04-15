@@ -10,8 +10,8 @@
 </button>
 
 {#if adding}
-    <PopoutMessage >
-        <FormAddIngredient on:click={()=>adding=false} title="Add Ingredient"/>
+    <PopoutMessage on:click={()=>adding=false} title="Add Ingredient">
+        <FormAddIngredient />
     </PopoutMessage>
 {/if}
 
