@@ -83,6 +83,7 @@
         padding: 20px;
         margin-top: 20px;
         color: white;
+        border-radius: 5px;
     }
     .PopoutMessage :global(input[type="submit"]):hover {
         background-color: orange
