@@ -27,6 +27,7 @@ import ShoppingList from "./ShoppingList/ShoppingList.svelte";
         background-color: rgb(252, 190, 110);
         height: 100%;
         width: 100%;
+        font-family: Arial, Helvetica, sans-serif;
     }
 
     /* section > :global(.LeftBar) {

@@ -28,17 +28,25 @@ $: recipeValues = Object.values($recipes);
     section {
         display: flex;
         height: 100%;
+        color: rgb(134, 76, 0);
     }
     .RecipeList {
         display: flex;
         flex-direction: column;
-        background-color: white;
+        background-color: rgb(255, 175, 27);
         height: 100%;
         overflow: auto;
-        padding: 10px 3px;
+        padding: 10px 0px;
         border-radius: 10px;
         
-        width: 160px
+        width: 160px;
+
+       
+    }
+    span {
+        width: 100%;
+        display: flex;
+        justify-content: center;
     }
 /* 
     @media only screen and (max-width: 1000px) {

@@ -69,9 +69,11 @@
     .active {
         color: white;
         background-color: rgb(253, 163, 104);
+        transition: all 0.2s;
     }
 
     .active :global(svg) {
+        transition: all 0.2s;
         width: 40px;
         height: 40px;
     }

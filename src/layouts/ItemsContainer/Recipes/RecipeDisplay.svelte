@@ -69,7 +69,7 @@ $: recipe = $recipes[$currRecipe]
     }
 
     .Procedure {
-        background-color: yellow;
+        background-color: rgb(255, 188, 62);
         margin: 10px;
         padding: 10px;
         border-radius: 10px;

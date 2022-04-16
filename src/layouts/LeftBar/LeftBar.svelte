@@ -31,7 +31,7 @@ import User from "./User/User.svelte";
         /* display: flex;
         justify-content: center;
         align-items: center; */
-        font-family: Arial, Helvetica, sans-serif;
+        
         color: white;
         
     }

@@ -15,7 +15,7 @@ import { currRecipe } from "$src/stores/Recipes";
 </script>
 
 <button class={activated && "Activated"} on:click|self={handleClick}>
-    <div class="NameWrapper">
+    <div class="NameWrapper" on:click={handleClick}>
         {name}
     </div>
 
@@ -29,15 +29,19 @@ import { currRecipe } from "$src/stores/Recipes";
 
 <style>
     button {
-        background-color: yellow;
+        background-color: rgb(255, 179, 66);
         text-align: left;
         padding: 10px 0px 10px 10px;
-        width: 100%;
+        width: 95%;
         position: relative;
 
         display: flex;
         align-items: center;
         justify-content: space-between;
+    }
+
+    button:not(.Activated):hover {
+        background-color: rgb(248, 204, 122);
     }
 
     .DeleteWrapper {
@@ -61,6 +65,8 @@ import { currRecipe } from "$src/stores/Recipes";
     }
 
     .Activated {
-        background-color: rgb(0, 255, 13);
+        background-color: rgb(248, 204, 122);
+        transition: width 0.2s;
+        width: 100%;
     }
 </style>
