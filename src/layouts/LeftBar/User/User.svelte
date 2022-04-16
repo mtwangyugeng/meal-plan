@@ -30,7 +30,7 @@ import FormSignIn from "./FormSignIn.svelte";
     .SignIn {
         width: 80px;
         height: 40px;
-        background-color: lightblue;
+        background-color: rgb(212, 139, 3);
         border-radius: 10px;
     }
 

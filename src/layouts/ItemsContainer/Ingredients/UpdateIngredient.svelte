@@ -10,8 +10,11 @@ import UpdateIcon from "$src/assets/UpdateIcon.svelte";
 
 
 <style>
-    .UpdateIngredient:hover {
+    .UpdateIngredient {
         opacity: 0.7;
+    }
+    .UpdateIngredient:hover {
+        opacity: 1;
     }
     .UpdateIngredient :global(svg){
         width: 30px;

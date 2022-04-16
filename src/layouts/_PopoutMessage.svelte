@@ -73,6 +73,7 @@
         background-color: rgb(252, 204, 149);
         border: none;
         margin: 2px;
+        font-size: 18px;
     }
     .PopoutMessage :global(input:not([type="submit"])):focus {
         outline: 1px solid #000000;

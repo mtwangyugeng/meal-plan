@@ -9,8 +9,11 @@
     
     
     <style>
-        .DeleteIngredient:hover {
+        .DeleteIngredient {
             opacity: 0.7;
+        }
+        .DeleteIngredient:hover {
+            opacity: 1;
         }
     
         .DeleteIngredient :global(svg){

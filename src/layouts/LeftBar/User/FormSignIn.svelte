@@ -72,6 +72,7 @@ form {
     text-decoration: underline;
     margin-left: 10px;
     font-weight: bold;
+    color: brown;
 }
 .Switch:hover {
     color: darkred;
@@ -82,6 +83,7 @@ form {
     margin-left: 5px;
     user-select: none;
     cursor: pointer;
+    color: black;
 }
 
 </style>

@@ -2,15 +2,18 @@
 import GithubIcon from "$src/assets/GithubIcon.svelte";
 import LinkedInIcon from "$src/assets/LinkedInIcon.svelte";
 
+const goLink = (link) => {
+    return ()=>window.open(link);
+}
 </script>
 
 <div class="Connections">
     <hr />
     <section>
-        <span class="LinkedIn">
+        <span class="LinkedIn" on:click={goLink("https://www.linkedin.com/in/yu-geng-simon-wang/")}>
             <LinkedInIcon />
         </span>
-        <span class="Github">
+        <span class="Github" on:click={goLink("https://github.com/mtwangyugeng/meal-plan")}>
             <GithubIcon />
         </span>
     </section>
