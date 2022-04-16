@@ -50,7 +50,7 @@
         height: 30px;
     }
 
-    button:hover :global(svg) {
+    button:not(.active):hover :global(svg) {
         animation-name: shake;
         animation-duration: 100ms;
         animation-iteration-count: 2;

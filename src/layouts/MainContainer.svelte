@@ -29,10 +29,10 @@ import ShoppingList from "./ShoppingList/ShoppingList.svelte";
         width: 100%;
     }
 
-    section > :global(.LeftBar) {
-        /* background-color: grey; */
-        width: 250px;
-    }
+    /* section > :global(.LeftBar) {
+        background-color: grey;
+        width: 280px;
+    } */
 
     section > :global(.ShoppingList) {
         /* background-color: lightblue; */

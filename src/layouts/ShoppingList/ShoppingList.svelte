@@ -54,6 +54,7 @@ $: total = listItemValues.reduce((total, v)=>{
         padding: 10px;
     }
     .container {
+        padding: 10px;
         border-radius: 10px;
         display: flex;
         flex-direction: column;

@@ -23,6 +23,10 @@ import FormSignIn from "./FormSignIn.svelte";
 
 
 <style>
+    .User {
+        margin-bottom: 40px;
+    }
+
     .SignIn {
         width: 80px;
         height: 40px;
