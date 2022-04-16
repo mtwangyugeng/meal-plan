@@ -16,7 +16,7 @@
     <IngredientCard {...ingredient} on:click={()=>removeListItem(ingredient_id)}/>
     x 
     {#key amount}
-    <span style="display: inline-block" in:fly={{ y: -20 }}>
+    <span in:fly={{ y: -20 }}>
         {amount}
     </span>
     {/key}

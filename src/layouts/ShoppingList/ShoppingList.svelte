@@ -63,7 +63,7 @@ $: total = listItemValues.reduce((total, v)=>{
     }
     h2 {
         text-align: center;
-        /* color: white; */
+        color: rgb(199, 126, 17);
     }
 
     .ListItems {

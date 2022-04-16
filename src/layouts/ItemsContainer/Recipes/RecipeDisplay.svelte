@@ -30,9 +30,9 @@ $: recipe = $recipes[$currRecipe]
 
     <h4>Procedures</h4>
     <div class="Procedures">
-        {#each $recipeProcedures as procedure}
+        {#each $recipeProcedures as procedure, i}
             <div class="Procedure">
-                {procedure.content}
+                {i+1}. {procedure.content}
             </div>
         {/each}
     </div>

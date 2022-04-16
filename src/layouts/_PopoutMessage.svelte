@@ -76,7 +76,7 @@
         font-size: 18px;
     }
     .PopoutMessage :global(input:not([type="submit"])):focus {
-        outline: 1px solid #000000;
+        outline: 1px solid #f77e2e;
     }
 
     .PopoutMessage :global(input[type="submit"]) {
