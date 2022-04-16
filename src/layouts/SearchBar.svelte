@@ -35,7 +35,7 @@
     }
 
     .container {
-        background-color: rgb(245, 207, 213);
+        background-color: rgb(245, 229, 207);
         display: flex;
         width: 500px;
         border-radius: 40px;

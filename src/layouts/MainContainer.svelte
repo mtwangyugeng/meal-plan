@@ -31,7 +31,7 @@ import ShoppingList from "./ShoppingList/ShoppingList.svelte";
 
     section > :global(.LeftBar) {
         /* background-color: grey; */
-        width: 150px;
+        width: 250px;
     }
 
     section > :global(.ShoppingList) {

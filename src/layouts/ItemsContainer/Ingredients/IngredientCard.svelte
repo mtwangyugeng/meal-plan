@@ -11,7 +11,7 @@
 
 <div class="Card" on:click >
     <h3>{name ? name : '<name>'}</h3>
-    <i>#{id ? id : '<id>'}</i>
+    <i>id: #{id ? id : '<id>'}</i>
     <p>Store: {store ? store: '<store>'}</p>
     {#if (amount || unit || price)}
         <p>Package: {amount ? amount: "-"} {unit ? unit: "-"} / ${price ? (price/100.00).toFixed(2) : "--.--"}</p>

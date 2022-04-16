@@ -16,7 +16,8 @@ import Recipes from "./Recipes/Recipes.svelte";
 
 <style>
     .ItemsContainer {
-        border: 1px solid brown;
+        /* border: 1px solid brown; */
+        background-color: rgb(238, 200, 144);
         border-radius: 10px;
         margin: 10px;
     }

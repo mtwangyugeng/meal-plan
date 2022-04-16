@@ -6,7 +6,9 @@ import User from "./User/User.svelte";
 </script>
 
 <div class="LeftBar">
+    
     <div class="container">
+        <h1>Meal Plan</h1>
         <Tabs />
         <User />
     </div>
@@ -14,16 +16,18 @@ import User from "./User/User.svelte";
 
 <style>
     .LeftBar {
-        display: flex;
+        /* display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: center; */
+        font-family: Arial, Helvetica, sans-serif;
+        color: white;
     }
 
     .container {
-        height: 90%;
-        width: 90%;
-        background-color: rgb(255, 114, 58);
-        border-radius: 50px;
+        height: 100%;
+        width: 100%;
+        background-color: rgb(255, 79, 9);
+        /* border-radius: 50px; */
         padding-top: 50px;
         padding-bottom: 50px;
 
