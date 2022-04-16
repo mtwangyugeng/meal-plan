@@ -37,6 +37,8 @@ $: recipeValues = Object.values($recipes);
         overflow: auto;
         padding: 10px 3px;
         border-radius: 10px;
+        
+        width: 160px
     }
 /* 
     @media only screen and (max-width: 1000px) {

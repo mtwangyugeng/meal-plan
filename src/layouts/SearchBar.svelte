@@ -8,6 +8,10 @@
 
     import {currTab} from "$src/stores/Tab"
     import { fly } from 'svelte/transition';
+
+    currTab.subscribe(()=>{
+        search = "";
+    })
 </script>
 
 <div class="SearchBar">

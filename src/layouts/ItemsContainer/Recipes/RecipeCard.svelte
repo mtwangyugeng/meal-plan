@@ -15,22 +15,34 @@ import { currRecipe } from "$src/stores/Recipes";
 </script>
 
 <button class={activated && "Activated"} on:click|self={handleClick}>
-    {name}
+    <div class="NameWrapper">
+        {name}
+    </div>
 
-    <span class="Delete" on:click={()=>deleting=true}>
-    <DeleteIcon />
-    </span>
+    <div class="DeleteWrapper">
+        <span class="Delete" on:click={()=>deleting=true}>
+        <DeleteIcon />
+        </span>
+    </div>
 </button>
 
 
 <style>
     button {
-        /* width: 100px; */
         background-color: yellow;
         text-align: left;
-        padding: 10px 30px 10px 5px;
-        width: 100px;
+        padding: 10px 0px 10px 10px;
+        width: 100%;
         position: relative;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .DeleteWrapper {
+        width: 20px;
+        height: 20px;
     }
 
     .Delete > :global(svg) {
@@ -40,8 +52,8 @@ import { currRecipe } from "$src/stores/Recipes";
 
     .Delete {
         display: none;
-        position: absolute;
-        right: 0;
+        /* position: absolute;
+        right: 0; */
     }
 
     button:hover .Delete {
