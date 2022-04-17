@@ -51,7 +51,7 @@ $: total = listItemValues.reduce((total, v)=>{
 
 <style>
     .ShoppingList {
-        padding: 10px;
+        padding: 10px 10px 10px 0;
     }
     .container {
         padding: 10px;

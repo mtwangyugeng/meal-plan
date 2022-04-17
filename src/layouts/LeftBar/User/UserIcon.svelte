@@ -1,7 +1,8 @@
 <script>
-    import {user, logout} from "$src/stores/User"
+    import YesCancel from "$src/layouts/_YesCancel.svelte";
+import {user, logout} from "$src/stores/User"
 
-
+    let loggingOut = false;
 </script>
 
 <div class="Container">
@@ -13,12 +14,19 @@
         <div>
             {$user.username}
         </div>
-        <button class="LogOut" on:click={logout}>
+        <button class="LogOut" on:click={()=>loggingOut=true}>
             Log Out
         </button>
     </div>
 </div>
 
+{#if loggingOut}
+    <YesCancel 
+        message = "Log Out?"
+        handleYes = {logout} 
+        close = {() => loggingOut = false}
+    />
+{/if}
 
 
 <style>
