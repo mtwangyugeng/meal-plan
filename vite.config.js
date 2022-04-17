@@ -9,5 +9,11 @@ export default defineConfig({
     alias: {
       $src: path.resolve('./src')
     }
+  },
+  server: {
+    proxy: {
+      '/api': 'http://localhost:3001'
+    },
+    cors: true
   }
 })

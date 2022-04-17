@@ -9,8 +9,10 @@ import User from "./User/User.svelte";
 <div class="LeftBar">
     
     <div class="container">
-        <h1>Meal Plan</h1>
-        <Tabs />
+        <span class="Top">
+            <h1>Meal Plan</h1>
+            <Tabs />
+        </span>
         <span class="Bottom">
             <User />
             <Connections />
@@ -19,7 +21,18 @@ import User from "./User/User.svelte";
 </div>
 
 <style>
+    h1 {
+        margin-bottom: 50px;
+    }
     .Bottom {
+        /* background-color: #fff; */
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .Top {
         /* background-color: #fff; */
         width: 100%;
         display: flex;

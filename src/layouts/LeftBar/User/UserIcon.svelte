@@ -1,0 +1,50 @@
+<script>
+    import {user, logout} from "$src/stores/User"
+
+
+</script>
+
+<div class="Container">
+    <button class="UserIcon" title={$user.username}>
+        {$user.username[0]}
+    </button>
+
+    <div class="RightSide">
+        <div>
+            {$user.username}
+        </div>
+        <button class="LogOut" on:click={logout}>
+            Log Out
+        </button>
+    </div>
+</div>
+
+
+
+<style>
+    .UserIcon {
+        text-transform: uppercase;
+        font-weight: bold;
+        background-color: rgb(141, 2, 2);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 10px
+    }
+
+    .LogOut {
+        margin-top: 10px;
+        background-color: rgb(196, 117, 0);
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    .LogOut:hover {
+        filter: brightness(120%)
+    }
+
+    .Container {
+        display: flex;
+        align-items: center;
+    }
+</style>

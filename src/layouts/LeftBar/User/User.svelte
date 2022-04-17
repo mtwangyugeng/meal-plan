@@ -1,7 +1,8 @@
 <script>
    import PopoutMessage from "$src/layouts/_PopoutMessage.svelte";
-import {user, token} from "$src/stores/User"
+import {token} from "$src/stores/User"
 import FormSignIn from "./FormSignIn.svelte";
+import UserIcon from "./UserIcon.svelte";
 
    let signningIn = false;
 </script>
@@ -10,14 +11,13 @@ import FormSignIn from "./FormSignIn.svelte";
 {#if $token == ""}
     <button class="SignIn" on:click={()=>signningIn=true}>Sign In</button>
 {:else}
-    <button>Logout</button>
-    <div>{$user.email}</div>
+    <UserIcon />
 {/if}
 </div>
 
 {#if signningIn == true}
     <PopoutMessage on:click={()=>signningIn=false}>
-        <FormSignIn />
+        <FormSignIn close={()=>signningIn=false} />
     </PopoutMessage>
 {/if}
 

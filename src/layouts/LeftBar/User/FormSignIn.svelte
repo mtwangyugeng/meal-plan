@@ -1,15 +1,27 @@
 <script>
-let creating = false;
+import { postSignup, postSignin } from "$src/stores/User";
 
-const handleSubmit = () => {
+
+let creating = false;
+export let close;
+
+const handleSubmit = async () => {
     if (creating) {
-        console.log("creating")
+        if(username && password === confirmPassword) {
+            const status = await postSignup({"username":username, "password":password})
+            if(status == 201) {
+                close();
+            }
+        }
     } else {
-        console.log("loggin")
+        const status = await postSignin({"username":username, "password":password})
+        if(status == 202) {
+            close();
+        }
     }
 }
 
-let userName = "";
+let username = "";
 let password = "";
 let confirmPassword = "";
 
@@ -27,7 +39,7 @@ const handleConfirmPassword = (e) => {
 
 <form on:submit|preventDefault={handleSubmit}>
     <h2>{creating ? "Create Account": "Log in"}</h2>
-    <input bind:value={userName} placeholder="User Name" />
+    <input bind:value={username} placeholder="User Name" />
     <input on:input={handlePassword} type={passwordType} placeholder="Password" />
     {#if creating}
         <input on:input={handleConfirmPassword} type={passwordType} placeholder="Confirm Password" />
