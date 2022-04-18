@@ -1,7 +1,9 @@
 import {writable} from "svelte/store"
+import { fetchTimeOut } from "./_FetchUtils";
 
 export const token = writable("");
 export const user = writable({username:"", id:""});
+
 
 export const postSignup = async (/** @type {{ username: string, password: string }} */ signupJson) => {
     const url = "/api/signup";
@@ -13,7 +15,7 @@ export const postSignup = async (/** @type {{ username: string, password: string
         body: JSON.stringify(signupJson),
     };
 
-    const res = await fetch(url, options);
+    const res = await fetchTimeOut(url, options);
     const resJson = await res.json();
    
     if (res.status == 201) {
@@ -39,7 +41,7 @@ export const postSignin = async (/** @type {{ username: string, password: string
         body: JSON.stringify(signupJson),
     };
 
-    const res = await fetch(url, options);
+    const res = await fetchTimeOut(url, options);
     const resJson = await res.json();
    
     if (res.status == 202) {

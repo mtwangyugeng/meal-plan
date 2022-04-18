@@ -1,23 +1,36 @@
 <script>
+import LoadingScreen from "$src/layouts/_LoadingScreen.svelte";
 import { postSignup, postSignin } from "$src/stores/User";
-
 
 let creating = false;
 export let close;
 
+let loading = false;
+let errorMessage = "";
 const handleSubmit = async () => {
-    if (creating) {
-        if(username && password === confirmPassword) {
-            const status = await postSignup({"username":username, "password":password})
-            if(status == 201) {
+    try{
+        if (creating) {
+            if(username && password === confirmPassword) {
+                loading = true;
+                const status = await postSignup({"username":username, "password":password})
+                loading = false;
+                if(status == 201) {
+                    close();
+                }
+            }
+        } else {
+            loading = true;
+            const status = await postSignin({"username":username, "password":password})
+            loading = false;
+            if(status == 202) {
                 close();
+            } else {
+                loading = false;
             }
         }
-    } else {
-        const status = await postSignin({"username":username, "password":password})
-        if(status == 202) {
-            close();
-        }
+    }catch (e) {
+        errorMessage = e.message;
+        loading = false;
     }
 }
 
@@ -39,6 +52,9 @@ const handleConfirmPassword = (e) => {
 
 <form on:submit|preventDefault={handleSubmit}>
     <h2>{creating ? "Create Account": "Log in"}</h2>
+
+    <p class="Error">{errorMessage}</p>
+
     <input bind:value={username} placeholder="User Name" />
     <input on:input={handlePassword} type={passwordType} placeholder="Password" />
     {#if creating}
@@ -59,10 +75,11 @@ const handleConfirmPassword = (e) => {
             <input name="submit" type="submit" value="Log In" />
         </div>
     {/if}
-    
-    
 </form>
 
+{#if loading}
+    <LoadingScreen />
+{/if}
 
 <style>
 h2 {
@@ -96,6 +113,12 @@ form {
     user-select: none;
     cursor: pointer;
     color: black;
+}
+
+.Error {
+    color: red;
+    height: 20px;
+    padding-left: 8px;
 }
 
 </style>
