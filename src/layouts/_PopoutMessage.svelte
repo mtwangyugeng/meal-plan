@@ -1,9 +1,10 @@
 <script>
     export let title = "";
+    export let shake = true;
 </script>
 
 <div class="PopoutMessage">
-    <div class="container">
+    <div class={"container " + (shake ? "Shake" : "")}>
         <div class="cross" on:click>x</div>
         <h2>{title}</h2>
     <slot />
@@ -88,5 +89,25 @@
     }
     .PopoutMessage :global(input[type="submit"]):hover {
         background-color: orange
+    }
+
+    .Shake {
+        animation: shake 0.5s;
+        /* When the animation is finished, start again */
+        animation-iteration-count: 1; 
+    }
+
+    @keyframes shake {
+        0% { transform: translate(1px, 1px) rotate(0deg); }
+        10% { transform: translate(-1px, -2px) rotate(-1deg); }
+        20% { transform: translate(-3px, 0px) rotate(1deg); }
+        30% { transform: translate(3px, 2px) rotate(0deg); }
+        40% { transform: translate(1px, -1px) rotate(1deg); }
+        50% { transform: translate(-1px, 2px) rotate(-1deg); }
+        60% { transform: translate(-3px, 1px) rotate(0deg); }
+        70% { transform: translate(3px, 1px) rotate(-1deg); }
+        80% { transform: translate(-1px, -1px) rotate(1deg); }
+        90% { transform: translate(1px, 2px) rotate(0deg); }
+        100% { transform: translate(1px, -2px) rotate(-1deg); }
     }
 </style>

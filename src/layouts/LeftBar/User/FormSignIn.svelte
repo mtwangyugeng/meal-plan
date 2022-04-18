@@ -1,5 +1,6 @@
 <script>
 import LoadingScreen from "$src/layouts/_LoadingScreen.svelte";
+import PopoutMessage from "$src/layouts/_PopoutMessage.svelte";
 import { postSignup, postSignin } from "$src/stores/User";
 
 let creating = false;
@@ -7,9 +8,16 @@ export let close;
 
 let loading = false;
 let errorMessage = "";
+let shake = false;
 const handleSubmit = async () => {
     try{
+        if (username.length <= 6) {
+            throw new Error("Username: must be 6 more characters.")
+        }
         if (creating) {
+            if (password.length <= 6) {
+                throw new Error("Password: must be 6 more characters.")
+            }
             if(username && password === confirmPassword) {
                 loading = true;
                 const status = await postSignup({"username":username, "password":password})
@@ -17,6 +25,8 @@ const handleSubmit = async () => {
                 if(status == 201) {
                     close();
                 }
+            } else {
+                throw new Error("Password and Confirm Password must match.")
             }
         } else {
             loading = true;
@@ -31,6 +41,8 @@ const handleSubmit = async () => {
     }catch (e) {
         errorMessage = e.message;
         loading = false;
+        shake = true;
+        setTimeout(()=>shake=false, 500);
     }
 }
 
@@ -50,6 +62,7 @@ const handleConfirmPassword = (e) => {
 }
 </script>
 
+<PopoutMessage on:click={close} shake={shake}>
 <form on:submit|preventDefault={handleSubmit}>
     <h2>{creating ? "Create Account": "Log in"}</h2>
 
@@ -80,9 +93,11 @@ const handleConfirmPassword = (e) => {
 {#if loading}
     <LoadingScreen />
 {/if}
+</PopoutMessage>
 
 <style>
 h2 {
+    margin-top: 10px;
     margin-bottom: 20px;
 }
 form {
@@ -90,6 +105,7 @@ form {
 }
 
 .Bottom {
+    margin-top: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;

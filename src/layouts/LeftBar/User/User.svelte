@@ -16,9 +16,7 @@ import UserIcon from "./UserIcon.svelte";
 </div>
 
 {#if signningIn == true}
-    <PopoutMessage on:click={()=>signningIn=false}>
-        <FormSignIn close={()=>signningIn=false} />
-    </PopoutMessage>
+    <FormSignIn close={()=>signningIn=false} />
 {/if}
 
 
