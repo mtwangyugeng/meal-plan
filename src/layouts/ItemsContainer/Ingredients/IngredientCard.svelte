@@ -35,7 +35,7 @@
 
     :global(.Card) {
         /* background-color: white; */
-        width: 200px;
+        width: 190px;
         height: 100px;
         padding: 10px;
         border-radius: 10px;

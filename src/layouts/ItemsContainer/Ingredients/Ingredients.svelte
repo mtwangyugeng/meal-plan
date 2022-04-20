@@ -59,25 +59,33 @@ import AskDelete from "./AskDeleteIngredient.svelte";
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+        overflow: hidden;
     }
     .CardWrapper {
         position: relative;
+        /* margin: 10px */
     }
     .Options{
         position: absolute;
-        bottom: -30px;
-        right: 0px;
+        top: 0px;
+        right: -30px;
         display: none;
         user-select: none;
         z-index: 2;
 
-        width: 100%;
-        /* display: flex; */
-        /* background-color: #fff; */
+        width: 50px;
+        height: 100%;
+        
+        /* background-color: #888;
+        opacity: 0.5;
+        display: flex;
+        flex-direction: column;
+        justify-content: center; */
     }
     .CardWrapper:hover .Options {
         display: flex;
-        justify-content: flex-end;
+        flex-direction: column;
+        justify-content: center;
     }
 
 
