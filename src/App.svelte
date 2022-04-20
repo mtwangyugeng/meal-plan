@@ -35,4 +35,26 @@ import MainContainer from "./layouts/MainContainer.svelte";
 		cursor: pointer;
 		outline: inherit;
 	}
+
+	/* Scrollbars */
+	/* Works on Firefox */
+	:global(*) {
+	scrollbar-width: thin;
+	scrollbar-color: rgb(241, 82, 71) orange;
+	}
+
+	/* Works on Chrome, Edge, and Safari */
+	:global(*)::-webkit-scrollbar {
+	width: 5px;
+	}
+
+	:global(*)::-webkit-scrollbar-track {
+	background: orange;
+	}
+
+	:global(*)::-webkit-scrollbar-thumb {
+	background-color: rgb(241, 82, 71);
+	border-radius: 20px;
+	border: 3px solid orange;
+	}
 </style>

@@ -30,19 +30,17 @@ import ShoppingList from "./ShoppingList/ShoppingList.svelte";
         font-family: Arial, Helvetica, sans-serif;
     }
 
-    /* section > :global(.LeftBar) {
-        background-color: grey;
-        width: 280px;
-    } */
+    section > :global(.LeftBar) {
+        width: 200px;
+    }
 
     section > :global(.ShoppingList) {
-        /* background-color: lightblue; */
-        width: 400px;
+        width: 280px;
     }
 
     .MidContainer {
         /* background-color: lightgrey; */
-        width: 100%;
+        width: calc(100% - 480px);
         display: flex;
         flex-direction: column;
     }
@@ -50,6 +48,7 @@ import ShoppingList from "./ShoppingList/ShoppingList.svelte";
     .MidContainer > :global(.SearchBar) {
         /* background-color: pink; */
         height: 100px;
+        padding: 10px;
     }
 
     .MidContainer > :global(.ItemsContainer) {

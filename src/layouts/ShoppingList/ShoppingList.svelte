@@ -52,6 +52,7 @@ $: total = listItemValues.reduce((total, v)=>{
 <style>
     .ShoppingList {
         padding: 10px 10px 10px 0;
+        
     }
     .container {
         padding: 10px;
@@ -59,7 +60,7 @@ $: total = listItemValues.reduce((total, v)=>{
         display: flex;
         flex-direction: column;
         background-color: rgb(255, 218, 148);
-        height: 100%;
+        height: 100%; 
     }
     h2 {
         text-align: center;
@@ -68,7 +69,13 @@ $: total = listItemValues.reduce((total, v)=>{
 
     .ListItems {
         /* background-color: grey; */
+        overflow-y: auto;
         height: 100%;
+        margin: 5px 0px;
+        border: 1px solid rgb(161, 66, 3);
+        border-radius: 10px 0px 0px 10px;
+        overflow-x: hidden;
+        padding: 10px;
     }
     .Total {
         background-color: orange;

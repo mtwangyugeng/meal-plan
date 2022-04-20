@@ -51,7 +51,6 @@ import User from "./User/User.svelte";
 
     .container {
         height: 100%;
-        width: 200px;
         background-color: rgb(255, 79, 9);
         /* border-radius: 50px; */
         padding-top: 50px;
