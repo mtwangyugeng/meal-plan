@@ -1,6 +1,5 @@
 <script>
-import { createIngredient } from "$src/stores/Ingredients";
-
+import LoadingScreen from "$src/layouts/_LoadingScreen.svelte";
 
 import IngredientCard from "./IngredientCard.svelte";
 
@@ -14,14 +13,18 @@ export let ingreident = {
 
 export let submitRequest;
 export let close;
+let loading = false;
 
 const handleSubmit = async () => {
+    loading = true;
     const status = await submitRequest(ingreident);
-    console.log("submit: "+status);
+    loading = false;
     if(status < 400) {
         close();
     }
 }
+
+
 </script>
 
 
@@ -52,3 +55,7 @@ const handleSubmit = async () => {
         
         <input type="submit" value="Add Ingredient" />
     </form>
+
+    {#if loading}
+        <LoadingScreen />
+    {/if}

@@ -8,15 +8,13 @@
 </script>
 
 
-<PopoutMessage on:click={close}>
-    <section>
+<section>
     <div class="Message">{message}</div>
     <div class="Chooses">
         <button class="Yes" on:click={handleYes}>Yes</button>
         <button on:click={close}>Cancel</button>
     </div>
-    </section>
-</PopoutMessage>
+</section>
 
 
 <style>
