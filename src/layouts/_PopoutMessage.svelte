@@ -1,6 +1,6 @@
 <script>
     export let title = "";
-    export let shake = true;
+    export let shake = false;
 </script>
 
 <div class="PopoutMessage">

@@ -1,14 +1,15 @@
 <script>
+import { createIngredient } from "$src/stores/Ingredients";
+
 
 import IngredientCard from "./IngredientCard.svelte";
 
 export let ingreident = {
-    id: "",
-    name: "",
-    unit: "",
-    amount: "",
-    price: '',
-    store: ''
+    name: "Chicken",
+    unit: "kg",
+    amount: "1",
+    price: '1111',
+    store: 'Lucky'
 }
 
 </script>
@@ -17,12 +18,12 @@ export let ingreident = {
 
     <IngredientCard {...ingreident}/>
 
-    <form>
+    <form on:submit|preventDefault={()=>createIngredient(ingreident)}>
         <input bind:value={ingreident.name} placeholder="Enter Name"/>
         <input bind:value={ingreident.store} placeholder="Enter Store"/>
 
         <div class="Package">
-            <input type="number" bind:value={ingreident.amount} placeholder="Enter Package Size"/>
+            <input step=".01" type="number" bind:value={ingreident.amount} placeholder="Enter Package Size"/>
             <select bind:value={ingreident.unit} required>
                 <optgroup label="Volumn">
                 <option value="ml">ml</option>

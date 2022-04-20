@@ -1,5 +1,5 @@
 <script>
-    export let id;
+    export let id="";
     export let name;
     export let store;
     export let amount;
@@ -35,7 +35,7 @@
 
     :global(.Card) {
         /* background-color: white; */
-        width: 180px;
+        width: 200px;
         height: 100px;
         padding: 10px;
         border-radius: 10px;

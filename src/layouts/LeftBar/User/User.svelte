@@ -1,10 +1,18 @@
 <script>
    import PopoutMessage from "$src/layouts/_PopoutMessage.svelte";
+import { indexIngredient, ingredients } from "$src/stores/Ingredients";
 import {token} from "$src/stores/User"
 import FormSignIn from "./FormSignIn.svelte";
 import UserIcon from "./UserIcon.svelte";
 
    let signningIn = false;
+
+
+$: if($token){
+        indexIngredient()
+    } else {
+        ingredients.set({});
+    }
 </script>
 
 <div class="User">

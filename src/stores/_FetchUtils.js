@@ -1,5 +1,5 @@
 
-export const fetchTimeOut = function (url, options, timeout = 1000) {
+export const fetchTimeOut = function (url, options, timeout = 5000) {
     return Promise.race([
         fetch(url, options),
         new Promise((_, reject) =>
