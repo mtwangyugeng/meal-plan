@@ -2,7 +2,7 @@
 import { searchRegex } from "$src/stores/Search";
 import AddIngredient from "./AddIngredient.svelte";
 import { flip } from 'svelte/animate';
-import { ingredients } from "$src/stores/Ingredients";
+import { ingredients, updateIngredient } from "$src/stores/Ingredients";
 import IngredientCard from "./IngredientCard.svelte";
 
 $: ingreidentValues = Object.values($ingredients);
@@ -18,6 +18,7 @@ import AskDelete from "./AskDeleteIngredient.svelte";
 
     let updating = false;
     let currIngredient = null;
+    let deletingID = null;
 
     let deleting = false;
 </script>
@@ -30,7 +31,7 @@ import AskDelete from "./AskDeleteIngredient.svelte";
         
         <div class="Options">
             <UpdateIngredient on:click={()=>{updating=true; currIngredient = {...ingredient}}}/>
-            <DeleteIngredient on:click={()=>{deleting=true;}} />
+            <DeleteIngredient on:click={()=>{deleting=true; deletingID = ingredient.id}} />
         </div>
 
         </div>        
@@ -42,14 +43,14 @@ import AskDelete from "./AskDeleteIngredient.svelte";
 
 {#if updating}
     <PopoutMessage on:click={()=>updating=false} title="Update Ingredient">
-        <FormIngredient ingreident={currIngredient} />
+        <FormIngredient close={()=>updating=false} ingreident={currIngredient} submitRequest={(ingredient)=>updateIngredient(currIngredient.id, ingredient)}/>
     </PopoutMessage>
 {/if}
 
 
 {#if deleting}
     <PopoutMessage on:click={()=>{deleting=false}} title="">
-        <AskDelete close={()=>{deleting=false}}/>
+        <AskDelete close={()=>{deleting=false}} id = {deletingID} />
     </PopoutMessage>
 {/if}
 

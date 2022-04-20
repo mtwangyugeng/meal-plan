@@ -39,3 +39,9 @@ export const removeListItem = (ingredient_id, amount=1) => {
 
     listItems.set(neo);
 }
+
+export const deleteListItem = (ingredient_id) => {
+    const neo = get(listItems)
+    delete neo[ingredient_id];
+    listItems.set(neo);
+}

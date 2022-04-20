@@ -4,7 +4,7 @@
     import { fly } from 'svelte/transition';
     import { removeListItem } from "$src/stores/ShoppingList";
 
-    export let id;
+    // export let id;
     export let ingredient_id;
     export let amount;
 

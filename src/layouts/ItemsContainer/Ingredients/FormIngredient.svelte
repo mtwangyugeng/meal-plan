@@ -12,13 +12,23 @@ export let ingreident = {
     store: 'Lucky'
 }
 
+export let submitRequest;
+export let close;
+
+const handleSubmit = async () => {
+    const status = await submitRequest(ingreident);
+    console.log("submit: "+status);
+    if(status < 400) {
+        close();
+    }
+}
 </script>
 
 
 
     <IngredientCard {...ingreident}/>
 
-    <form on:submit|preventDefault={()=>createIngredient(ingreident)}>
+    <form on:submit|preventDefault={handleSubmit}>
         <input bind:value={ingreident.name} placeholder="Enter Name"/>
         <input bind:value={ingreident.store} placeholder="Enter Store"/>
 

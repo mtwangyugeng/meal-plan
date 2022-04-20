@@ -1,10 +1,16 @@
 <script>
 import YesCancel from "$src/layouts/_YesCancel.svelte";
+import { deleteIngredient } from "$src/stores/Ingredients";
 
     export let close;
+    export let id;
+    const handleYes = () => {
+        deleteIngredient(id);
+        close();
+    }
 </script>
 
 <YesCancel 
     message = "Delete Ingredient?"
-    handleYes={close} close={close}
+    handleYes={handleYes} close={close}
 />
