@@ -7,13 +7,15 @@
     // export let id;
     export let ingredient_id;
     export let amount;
+    export let id;
 
     $: ingredient = $ingredients[ingredient_id]
 
 </script>
 
 <div class="ListItem">
-    <IngredientCard {...ingredient} on:click={()=>removeListItem(ingredient_id)}/>
+    {id}
+    <IngredientCard {...ingredient} request={()=>removeListItem(ingredient_id)}/>
     x 
     {#key amount}
     <span in:fly={{ y: -20 }}>

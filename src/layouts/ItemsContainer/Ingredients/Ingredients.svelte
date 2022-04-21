@@ -27,7 +27,7 @@ import AskDelete from "./AskDeleteIngredient.svelte";
 {#each ingreidentValues.filter(v => $searchRegex.test(v.name)) as ingredient (ingredient.id)}
     <span animate:flip="{{duration: 200}}">
         <div class="CardWrapper">
-        <IngredientCard {...ingredient} on:click={()=>addListItem(ingredient.id)}/>
+        <IngredientCard {...ingredient} request={()=>addListItem(ingredient.id)}/>
         
         <div class="Options">
             <UpdateIngredient on:click={()=>{updating=true; currIngredient = {...ingredient}}}/>

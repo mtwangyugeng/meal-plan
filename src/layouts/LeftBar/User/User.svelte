@@ -1,6 +1,6 @@
 <script>
-   import PopoutMessage from "$src/layouts/_PopoutMessage.svelte";
 import { indexIngredient, ingredients } from "$src/stores/Ingredients";
+import { indexListItems, listItems } from "$src/stores/ShoppingList";
 import {token} from "$src/stores/User"
 import FormSignIn from "./FormSignIn.svelte";
 import UserIcon from "./UserIcon.svelte";
@@ -9,9 +9,12 @@ import UserIcon from "./UserIcon.svelte";
 
 
 $: if($token){
-        indexIngredient()
+        indexIngredient().then(()=>{
+            indexListItems();
+        })
     } else {
         ingredients.set({});
+        listItems.set({})
     }
 </script>
 

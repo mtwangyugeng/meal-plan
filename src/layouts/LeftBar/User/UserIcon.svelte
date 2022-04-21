@@ -1,4 +1,6 @@
 <script>
+import PopoutMessage from "$src/layouts/_PopoutMessage.svelte";
+
     import YesCancel from "$src/layouts/_YesCancel.svelte";
 import {user, logout} from "$src/stores/User"
 
@@ -21,11 +23,13 @@ import {user, logout} from "$src/stores/User"
 </div>
 
 {#if loggingOut}
+<PopoutMessage on:click={()=>loggingOut = false}>
     <YesCancel 
         message = "Log Out?"
         handleYes = {logout} 
         close = {() => loggingOut = false}
     />
+</PopoutMessage>
 {/if}
 
 
