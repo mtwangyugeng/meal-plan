@@ -10,7 +10,7 @@ import FormRecipeIngredient from "./FormRecipeIngredient.svelte";
 </button>
 
 {#if adding}
-    <PopoutMessage on:click={()=>adding=false} title="Add Ingredient to Recipe">
+    <PopoutMessage close={()=>adding=false} title="Add Ingredient to Recipe">
         <FormRecipeIngredient close={()=>adding=false} />
     </PopoutMessage>
 {/if}

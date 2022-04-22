@@ -1,11 +1,14 @@
 <script>
     export let title = "";
     export let shake = false;
+    export let close = null;
 </script>
 
 <div class="PopoutMessage">
     <div class={"container " + (shake ? "Shake" : "")}>
-        <div class="cross" on:click>x</div>
+        {#if close}
+            <div class="cross" on:click={close}>x</div>
+        {/if}
         <h2>{title}</h2>
     <slot />
     </div>

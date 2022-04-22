@@ -42,14 +42,14 @@ import AskDelete from "./AskDeleteIngredient.svelte";
 </section>
 
 {#if updating}
-    <PopoutMessage on:click={()=>updating=false} title="Update Ingredient">
+    <PopoutMessage close={()=>updating=false} title="Update Ingredient">
         <FormIngredient close={()=>updating=false} ingreident={currIngredient} submitRequest={(ingredient)=>updateIngredient(currIngredient.id, ingredient)}/>
     </PopoutMessage>
 {/if}
 
 
 {#if deleting}
-    <PopoutMessage on:click={()=>{deleting=false}} title="">
+    <PopoutMessage title="">
         <AskDelete close={()=>{deleting=false}} id = {deletingID} />
     </PopoutMessage>
 {/if}

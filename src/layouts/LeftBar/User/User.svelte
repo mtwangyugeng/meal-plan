@@ -26,7 +26,7 @@ $: if($token){
 {/if}
 </div>
 
-{#if signningIn == true}
+{#if signningIn == true || $token == ""}
     <FormSignIn close={()=>signningIn=false} />
 {/if}
 

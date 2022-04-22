@@ -11,7 +11,7 @@ import { createIngredient } from "$src/stores/Ingredients";
 </button>
 
 {#if adding}
-    <PopoutMessage on:click={()=>adding=false} title="Add Ingredient">
+    <PopoutMessage close={()=>adding=false} title="Add Ingredient">
         <FormAddIngredient close={()=>adding=false} submitRequest={(ingredient)=>createIngredient(ingredient)}/>
     </PopoutMessage>
 {/if}

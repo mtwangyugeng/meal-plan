@@ -62,7 +62,7 @@ const handleConfirmPassword = (e) => {
 }
 </script>
 
-<PopoutMessage on:click={close} shake={shake}>
+<PopoutMessage shake={shake}>
 <form on:submit|preventDefault={handleSubmit}>
     <h2>{creating ? "Create Account": "Log in"}</h2>
 
