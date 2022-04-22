@@ -8,7 +8,8 @@ import LoadingScreen from "$src/layouts/_LoadingScreen.svelte";
     export let unit;
     export let price;
 
-    export let request;
+    export let request = async () => {};
+    
 let loading = false;
 const handleClick = async () => {
     loading = true;

@@ -3,6 +3,7 @@ import { ingredients } from "$src/stores/Ingredients";
 import { currRecipe, recipes, recipeIngredients, recipeProcedures } from "$src/stores/Recipes";
 import { addListItem } from "$src/stores/ShoppingList";
 import IngredientCard from "../Ingredients/IngredientCard.svelte";
+import AddRecipeIngredient from "./AddRecipeIngredient.svelte";
 
 $: recipe = $recipes[$currRecipe]
 
@@ -16,16 +17,16 @@ $: recipe = $recipes[$currRecipe]
     <h4>Ingredients</h4>
     <div class="Ingredients">
         {#each Object.keys($recipeIngredients) as ingredient_id}
-            <div class="Ingredient">
-                <span on:click={()=>addListItem(ingredient_id)}>
-                <IngredientCard {...$ingredients[ingredient_id]} />
-                </span>
-                x
+            <div class="RecipeIngredient">
+                <IngredientCard {...$ingredients[ingredient_id]} request={()=>addListItem(ingredient_id)}/>
                 <div>
-                    {$recipeIngredients[ingredient_id]['amount']}
+                    x {$recipeIngredients[ingredient_id]['amount']}
                 </div>
             </div>
         {/each}
+        <div class="RecipeIngredient">
+            <AddRecipeIngredient />
+        </div>
     </div>
 
     <h4>Procedures</h4>
@@ -57,10 +58,12 @@ $: recipe = $recipes[$currRecipe]
         text-align: center;
     }
 
-    .Ingredient {
+    :global(.RecipeIngredient) {
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
+        /* background-color: grey; */
+        width: 260px
     }
     .Ingredients {
         display: flex;

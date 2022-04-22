@@ -41,5 +41,6 @@
 
     svg {
         height: 20%;
+        min-height: 50px;
     }
 </style>

@@ -7,14 +7,14 @@
     // export let id;
     export let ingredient_id;
     export let amount;
-    export let id;
+    // export let id;
 
     $: ingredient = $ingredients[ingredient_id]
 
 </script>
 
 <div class="ListItem">
-    {id}
+    <!-- {id} -->
     <IngredientCard {...ingredient} request={()=>removeListItem(ingredient_id)}/>
     x 
     {#key amount}

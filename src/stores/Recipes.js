@@ -17,7 +17,7 @@ export const currRecipe = writable(1);
 // {recipe_id: {ingredient_id: {amount}}}
 export const recipeIngredients = writable([]);
 export async function getRecipeIngredients_byID(id) {
-    const mock = {1:{1:{amount:0.2}, 2:{amount: 0.3}}, 2:[]}
+    const mock = {1:{23:{amount:0.2}, 19:{amount: 0.3}}, 2:[]}
     recipeIngredients.set(mock[id])
 };
 
