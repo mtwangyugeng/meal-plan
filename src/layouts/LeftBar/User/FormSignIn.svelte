@@ -36,6 +36,7 @@ const handleSubmit = async () => {
                 close();
             } else {
                 loading = false;
+                throw new Error("Something is wrong with the server...")
             }
         }
     }catch (e) {
