@@ -70,12 +70,13 @@ import PopoutMessage from "$src/layouts/_PopoutMessage.svelte";
         }
     }
 let shake = false;
+export let title = "Title"
 </script>
 
 
 <svelte:window on:keydown={handleKeydown} />
 
-<PopoutMessage close={close} shake={shake} title="Add Ingredient to Recipe"> 
+<PopoutMessage close={close} shake={shake} title={title}> 
 <div class="FormIngredient">
     
 <div class="RecipeIngredient">
@@ -122,7 +123,7 @@ let shake = false;
     <div class="Amount">
         <input  type="number" step=".01" min="0.1" bind:value={amount} placeholder="Enter Amount"/>
     </div>
-    <input type="submit" value="Add Ingredient" />
+    <input type="submit" value="Submit" />
 </form>
 </div>
 {#if loading}

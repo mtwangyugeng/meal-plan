@@ -10,7 +10,7 @@ import FormRecipeIngredient from "./FormRecipeIngredient.svelte";
 </button>
 
 {#if adding}
-        <FormRecipeIngredient close={()=>adding=false} />
+        <FormRecipeIngredient close={()=>adding=false} title = "Add Recipe Ingredient"/>
 {/if}
 
 <style>
