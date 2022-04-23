@@ -19,6 +19,7 @@ $: recipeValues = Object.values($recipes);
             <RecipeCard {...recipe}/>
         </span>
         {/each}
+        
     </div>
     <RecipeDisplay />
 </section>

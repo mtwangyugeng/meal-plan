@@ -10,6 +10,7 @@ import UpdateRecipeName from "./UpdateRecipeName.svelte";
 
 $: recipe = $recipes[$currRecipe]
 import PopoutMessage from "$src/layouts/_PopoutMessage.svelte";
+import FormRecipe from "./FormRecipe.svelte";
     
 let updating = false;
 
@@ -56,13 +57,7 @@ let updating = false;
 </section>
 
 {#if updating}
-    <PopoutMessage close={()=>updating=false} title="Rename Recipe">
-        <form>
-            <br/>
-            <input type="text" bind:value={recipe.name} placeholder="Enter New Name"/>
-            <input type=submit value="Rename" />
-        </form>
-    </PopoutMessage>
+    <FormRecipe close={()=>updating=false} title="Rename Recipe" recipe={recipe} />
 {/if}
 
 <style>
