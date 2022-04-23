@@ -4,6 +4,7 @@
 import { makeRegex } from "$src/stores/Search";
     import IngredientCard from "../Ingredients/IngredientCard.svelte";
     import { flip } from 'svelte/animate';
+import PopoutMessage from "$src/layouts/_PopoutMessage.svelte";
 
     $: ingreidentValues = Object.values($ingredients);
     $: filteredIngredient = ingreidentValues.filter(v => searchRegex.test(v.name) && (!selectedIngredient || v.id != selectedIngredient.id))
@@ -68,11 +69,13 @@ import { makeRegex } from "$src/stores/Search";
             }
         }
     }
-
+let shake = false;
 </script>
 
 
 <svelte:window on:keydown={handleKeydown} />
+
+<PopoutMessage close={close} shake={shake} title="Add Ingredient to Recipe"> 
 <div class="FormIngredient">
     
 <div class="RecipeIngredient">
@@ -125,6 +128,7 @@ import { makeRegex } from "$src/stores/Search";
 {#if loading}
     <LoadingScreen />
 {/if}
+</PopoutMessage>
     
 <style>
     .FormIngredient {

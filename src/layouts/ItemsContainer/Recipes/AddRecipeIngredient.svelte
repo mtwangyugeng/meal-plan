@@ -10,9 +10,7 @@ import FormRecipeIngredient from "./FormRecipeIngredient.svelte";
 </button>
 
 {#if adding}
-    <PopoutMessage close={()=>adding=false} title="Add Ingredient to Recipe">
         <FormRecipeIngredient close={()=>adding=false} />
-    </PopoutMessage>
 {/if}
 
 <style>
@@ -28,6 +26,10 @@ import FormRecipeIngredient from "./FormRecipeIngredient.svelte";
     }
     button:hover {
         background-color: rgb(190, 190, 190);
+    }
+
+    .RecipeIngredient {
+        border: 0px;
     }
 
     div {

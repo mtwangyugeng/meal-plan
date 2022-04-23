@@ -12,9 +12,7 @@ import FormRecipeIngredient from "./FormRecipeIngredient.svelte";
     </button>
     
 {#if updating}
-    <PopoutMessage close={()=>updating=false} title="Update Ingredient in Recipe">
-        <FormRecipeIngredient close={()=>updating=false} recipeIngredient={recipeIngredient}/>
-    </PopoutMessage>
+    <FormRecipeIngredient close={()=>updating=false} recipeIngredient={recipeIngredient}/>
 {/if}
     <style>
         .UpdateIngredient {
