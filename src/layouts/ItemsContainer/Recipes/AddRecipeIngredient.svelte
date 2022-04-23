@@ -15,7 +15,7 @@ import FormRecipeIngredient from "./FormRecipeIngredient.svelte";
 
 <style>
     button {
-        background-color: rgb(219, 219, 219);
+        /* background-color: rgb(219, 219, 219); */
 
         padding: 10px;
         text-transform: capitalize;
@@ -23,19 +23,23 @@ import FormRecipeIngredient from "./FormRecipeIngredient.svelte";
         display: flex;
         align-items: center;
         justify-content: center;
+
+        border: 3px dashed rgb(134, 134, 134);
     }
     button:hover {
-        background-color: rgb(190, 190, 190);
+        background-color: rgb(209, 124, 12);
+        color: #fff;
+        transition: all 0.2s;
     }
 
-    .RecipeIngredient {
+    /* .RecipeIngredient {
         border: 0px;
-    }
+    } */
 
     div {
-        border: 3px dashed rgb(134, 134, 134);
+        /* border: 3px dashed rgb(134, 134, 134);
         width: 80%;
-        height: 80%;
+        height: 80%; */
 
         display: flex;
         align-items: center;

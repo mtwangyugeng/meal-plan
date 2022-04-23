@@ -2,12 +2,14 @@
 import { recipes } from "$src/stores/Recipes";
 import { searchRegex } from "$src/stores/Search";
 import { flip } from "svelte/animate";
+import FormRecipe from "./FormRecipe.svelte";
 import RecipeCard from "./RecipeCard.svelte";
 import RecipeDisplay from "./RecipeDisplay.svelte";
 
 
 $: recipeValues = Object.values($recipes);
 
+let adding = false;
 </script>
 
 
@@ -19,11 +21,14 @@ $: recipeValues = Object.values($recipes);
             <RecipeCard {...recipe}/>
         </span>
         {/each}
-        
+        <button on:click={()=>adding=true}>+</button>
     </div>
     <RecipeDisplay />
 </section>
 
+{#if adding}
+    <FormRecipe close={()=>adding=false} title="Add Recipe" />
+{/if}
 
 <style>
     section {
@@ -49,18 +54,18 @@ $: recipeValues = Object.values($recipes);
         display: flex;
         justify-content: center;
     }
-/* 
-    @media only screen and (max-width: 1000px) {
-        section {
-            flex-direction: column;
-            
-        }
-        .RecipeList {
-            background-color: lightblue;
-            flex-direction: row;
-            height: auto
-        }
-    } */
+
+    button {
+        height: 40px;
+        border: 3px dashed rgb(134, 134, 134);
+        margin: 10px;
+        border-radius: 8px;
+    }
+    button:hover {
+        background-color: rgb(209, 124, 12);
+        color: white;
+        transition: all 0.2s;
+    }
 
     h3 {
         text-align: center;

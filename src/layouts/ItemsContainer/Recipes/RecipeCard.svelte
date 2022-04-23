@@ -32,7 +32,7 @@ import { currRecipe } from "$src/stores/Recipes";
 
 {#if deleting}
     <PopoutMessage >
-        <YesCancel handleYes={handleYes} close={()=>deleting=false} />
+        <YesCancel handleYes={handleYes} close={()=>deleting=false} message="Delete Recipe?"/>
     </PopoutMessage>
 {/if}
 

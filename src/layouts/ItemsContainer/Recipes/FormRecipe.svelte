@@ -11,7 +11,7 @@
 <PopoutMessage close={close} title={title}>
     <form>
         <br/>
-        <input type="text" bind:value={recipe.name} placeholder="Enter New Name"/>
+        <input type="text" bind:value={recipe.name} placeholder="Enter Name"/>
         <input type=submit value="Rename" />
     </form>
 </PopoutMessage>
