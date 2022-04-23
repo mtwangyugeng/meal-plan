@@ -4,6 +4,7 @@ import { currRecipe, recipes, recipeIngredients, recipeProcedures } from "$src/s
 import { addListItem } from "$src/stores/ShoppingList";
 import IngredientCard from "../Ingredients/IngredientCard.svelte";
 import AddRecipeIngredient from "./AddRecipeIngredient.svelte";
+import UpdateRecipeIngredient from "./UpdateRecipeIngredient.svelte";
 
 $: recipe = $recipes[$currRecipe]
 
@@ -22,11 +23,14 @@ $: recipe = $recipes[$currRecipe]
                 <div>
                     x {$recipeIngredients[ingredient_id]['amount']}
                 </div>
+                
+                <div class="UpdateDelete">
+                    <UpdateRecipeIngredient recipeIngredient = {$recipeIngredients[ingredient_id]} />
+                </div>
             </div>
         {/each}
-        <div class="RecipeIngredient">
-            <AddRecipeIngredient />
-        </div>
+        <AddRecipeIngredient />
+
     </div>
 
     <h4>Procedures</h4>
@@ -63,7 +67,21 @@ $: recipe = $recipes[$currRecipe]
         justify-content: flex-start;
         align-items: center;
         /* background-color: grey; */
-        width: 260px
+        width: 260px;
+        height: 130px;
+       
+        border-radius: 10px;
+        margin: 10px;
+        position: relative;
+    }
+    .RecipeIngredient {
+        border: 1px solid;
+    }
+
+    .UpdateDelete {
+        position: absolute;
+        right: 0;
+        bottom: 0;
     }
     .Ingredients {
         display: flex;

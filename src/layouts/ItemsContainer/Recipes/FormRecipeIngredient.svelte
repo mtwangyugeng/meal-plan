@@ -8,10 +8,19 @@ import { makeRegex } from "$src/stores/Search";
     $: ingreidentValues = Object.values($ingredients);
     $: filteredIngredient = ingreidentValues.filter(v => searchRegex.test(v.name) && (!selectedIngredient || v.id != selectedIngredient.id))
 
-    let selectedIngredient = null;
+    
+
+    export let recipeIngredient = {
+        amount: null,
+        ingredient_id:null
+    }
+
+    let selectedIngredient = recipeIngredient.ingredient_id ? $ingredients[recipeIngredient.ingredient_id] : null;
+    let amount = recipeIngredient.amount;
+
     let hoverIngredient = null;
 
-    let amount = null;
+    
 
     export let close;
     let loading = false;
@@ -60,10 +69,12 @@ import { makeRegex } from "$src/stores/Search";
         }
     }
 
-
 </script>
+
+
 <svelte:window on:keydown={handleKeydown} />
 <div class="FormIngredient">
+    
 <div class="RecipeIngredient">
     {#if hoverIngredient}
         <IngredientCard {...hoverIngredient}/>

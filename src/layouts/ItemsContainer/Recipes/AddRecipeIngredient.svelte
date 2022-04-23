@@ -5,7 +5,7 @@ import FormRecipeIngredient from "./FormRecipeIngredient.svelte";
     let adding = false;
 </script>
 
-<button class="Card" on:click={()=>adding=true}>
+<button class="RecipeIngredient" on:click={()=>adding=true}>
     <div>+</div>
 </button>
 
