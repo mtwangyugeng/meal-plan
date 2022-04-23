@@ -16,6 +16,9 @@
 
 
 <style>
+    h2 {
+        margin-bottom: 10px;
+    }
     .PopoutMessage{
         position: fixed;
         top: 0;

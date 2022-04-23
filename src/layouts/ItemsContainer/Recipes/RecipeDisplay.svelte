@@ -6,15 +6,24 @@ import IngredientCard from "../Ingredients/IngredientCard.svelte";
 import AddRecipeIngredient from "./AddRecipeIngredient.svelte";
 import DeleteRecipeIngredient from "./DeleteRecipeIngredient.svelte";
 import UpdateRecipeIngredient from "./UpdateRecipeIngredient.svelte";
+import UpdateRecipeName from "./UpdateRecipeName.svelte";
 
 $: recipe = $recipes[$currRecipe]
+import PopoutMessage from "$src/layouts/_PopoutMessage.svelte";
+    
+let updating = false;
 
 </script>
 
 
 <section>
     <div class="container">
-    <h3>{recipe.name}</h3>
+    <h3>
+        {recipe.name}
+        <span class="UpdateName">
+            <UpdateRecipeName on:click={()=>updating=true} />
+        </span>
+    </h3>
 
     <h4>Ingredients</h4>
     <div class="Ingredients">
@@ -46,6 +55,15 @@ $: recipe = $recipes[$currRecipe]
     </div>
 </section>
 
+{#if updating}
+    <PopoutMessage close={()=>updating=false} title="Rename Recipe">
+        <form>
+            <br/>
+            <input type="text" bind:value={recipe.name} placeholder="Enter New Name"/>
+            <input type=submit value="Rename" />
+        </form>
+    </PopoutMessage>
+{/if}
 
 <style>
     section {
@@ -62,6 +80,19 @@ $: recipe = $recipes[$currRecipe]
     }
     h3 {
         text-align: center;
+        /* background-color: white; */
+        position: relative;
+    }
+
+    .UpdateName {
+        display: none;
+        position: absolute;
+        top: -5px;
+        margin-left: 10px;
+    }
+
+    h3:hover .UpdateName {
+        display: inline-block;
     }
 
     :global(.RecipeIngredient) {

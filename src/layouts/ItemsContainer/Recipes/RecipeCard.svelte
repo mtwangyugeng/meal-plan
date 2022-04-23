@@ -1,5 +1,7 @@
 <script>
 import DeleteIcon from "$src/assets/DeleteIcon.svelte";
+import PopoutMessage from "$src/layouts/_PopoutMessage.svelte";
+import YesCancel from "$src/layouts/_YesCancel.svelte";
 import { currRecipe } from "$src/stores/Recipes";
 
 
@@ -12,6 +14,8 @@ import { currRecipe } from "$src/stores/Recipes";
     $: activated = $currRecipe == id;
 
     let deleting = false
+
+    const handleYes = () => {}
 </script>
 
 <button class={activated && "Activated"} on:click|self={handleClick}>
@@ -26,6 +30,11 @@ import { currRecipe } from "$src/stores/Recipes";
     </div>
 </button>
 
+{#if deleting}
+    <PopoutMessage >
+        <YesCancel handleYes={handleYes} close={()=>deleting=false} />
+    </PopoutMessage>
+{/if}
 
 <style>
     button {
