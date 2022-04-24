@@ -1,5 +1,5 @@
 <script>
-import { recipes } from "$src/stores/Recipes";
+import { createRecipe, recipes } from "$src/stores/Recipes";
 import { searchRegex } from "$src/stores/Search";
 import { flip } from "svelte/animate";
 import FormRecipe from "./FormRecipe.svelte";
@@ -10,6 +10,7 @@ import RecipeDisplay from "./RecipeDisplay.svelte";
 $: recipeValues = Object.values($recipes);
 
 let adding = false;
+
 </script>
 
 
@@ -27,7 +28,7 @@ let adding = false;
 </section>
 
 {#if adding}
-    <FormRecipe close={()=>adding=false} title="Add Recipe" />
+    <FormRecipe close={()=>adding=false} title="Add Recipe" request={createRecipe}/>
 {/if}
 
 <style>

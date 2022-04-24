@@ -5,6 +5,7 @@ import { makeRegex } from "$src/stores/Search";
     import IngredientCard from "../Ingredients/IngredientCard.svelte";
     import { flip } from 'svelte/animate';
 import PopoutMessage from "$src/layouts/_PopoutMessage.svelte";
+import { currRecipe } from "$src/stores/Recipes";
 
     $: ingreidentValues = Object.values($ingredients);
     $: filteredIngredient = ingreidentValues.filter(v => searchRegex.test(v.name) && (!selectedIngredient || v.id != selectedIngredient.id))
@@ -13,7 +14,8 @@ import PopoutMessage from "$src/layouts/_PopoutMessage.svelte";
 
     export let recipeIngredient = {
         amount: null,
-        ingredient_id:null
+        ingredient_id:null,
+        id: null
     }
 
     let selectedIngredient = recipeIngredient.ingredient_id ? $ingredients[recipeIngredient.ingredient_id] : null;
@@ -71,6 +73,23 @@ import PopoutMessage from "$src/layouts/_PopoutMessage.svelte";
     }
 let shake = false;
 export let title = "Title"
+
+export let request;
+const handleSubmit = async () => {
+    const neo = {
+        ingredient_id: selectedIngredient.id,
+        amount: amount,
+        recipe_id: $currRecipe
+    }
+
+    loading = true
+    const status = await request(neo);
+    loading = false
+    if(status < 400) {
+        close();
+    }
+}
+
 </script>
 
 
@@ -90,7 +109,7 @@ export let title = "Title"
     </div>
 </div>
 
-<form on:submit|preventDefault={()=>{console.log("submit")}}> 
+<form on:submit|preventDefault={handleSubmit}> 
     <div class="SearchIngredients">
         <div class="SelectContainer">
             <div >

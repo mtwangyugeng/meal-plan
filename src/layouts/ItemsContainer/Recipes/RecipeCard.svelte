@@ -1,8 +1,9 @@
 <script>
 import DeleteIcon from "$src/assets/DeleteIcon.svelte";
+import LoadingScreen from "$src/layouts/_LoadingScreen.svelte";
 import PopoutMessage from "$src/layouts/_PopoutMessage.svelte";
 import YesCancel from "$src/layouts/_YesCancel.svelte";
-import { currRecipe } from "$src/stores/Recipes";
+import { currRecipe, deleteRecipe } from "$src/stores/Recipes";
 
 
     export let name;
@@ -15,7 +16,12 @@ import { currRecipe } from "$src/stores/Recipes";
 
     let deleting = false
 
-    const handleYes = () => {}
+    let loading = false;
+    const handleYes = async() => {
+        loading = true;
+        await deleteRecipe(id)
+        loading = false;
+    }
 </script>
 
 <button class={activated && "Activated"} on:click|self={handleClick}>
@@ -33,6 +39,9 @@ import { currRecipe } from "$src/stores/Recipes";
 {#if deleting}
     <PopoutMessage >
         <YesCancel handleYes={handleYes} close={()=>deleting=false} message="Delete Recipe?"/>
+        {#if loading}
+            <LoadingScreen />
+        {/if}
     </PopoutMessage>
 {/if}
 

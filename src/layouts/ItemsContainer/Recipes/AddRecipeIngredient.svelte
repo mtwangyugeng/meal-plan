@@ -1,5 +1,6 @@
 <script>
     import PopoutMessage from "$src/layouts/_PopoutMessage.svelte";
+import { createRecipeIngredient } from "$src/stores/Recipes";
 import FormRecipeIngredient from "./FormRecipeIngredient.svelte";
 
     let adding = false;
@@ -10,7 +11,7 @@ import FormRecipeIngredient from "./FormRecipeIngredient.svelte";
 </button>
 
 {#if adding}
-        <FormRecipeIngredient close={()=>adding=false} title = "Add Recipe Ingredient"/>
+        <FormRecipeIngredient close={()=>adding=false} title = "Add Recipe Ingredient" request={createRecipeIngredient}/>
 {/if}
 
 <style>

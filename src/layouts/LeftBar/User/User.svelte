@@ -1,5 +1,6 @@
 <script>
 import { indexIngredient, ingredients } from "$src/stores/Ingredients";
+import { indexRecipe, recipes } from "$src/stores/Recipes";
 import { indexListItems, listItems } from "$src/stores/ShoppingList";
 import {token} from "$src/stores/User"
 import FormSignIn from "./FormSignIn.svelte";
@@ -7,14 +8,15 @@ import UserIcon from "./UserIcon.svelte";
 
    let signningIn = false;
 
-
 $: if($token){
         indexIngredient().then(()=>{
             indexListItems();
+            indexRecipe();
         })
     } else {
         ingredients.set({});
         listItems.set({})
+        recipes.set({})
     }
 </script>
 

@@ -1,6 +1,6 @@
 <script>
 import { ingredients } from "$src/stores/Ingredients";
-import { currRecipe, recipes, recipeIngredients, recipeProcedures } from "$src/stores/Recipes";
+import { currRecipe, recipes, recipeIngredients, recipeProcedures, updateRecipe, getRecipeIngredients_byID, getRecipeProcedures_byID } from "$src/stores/Recipes";
 import { addListItem } from "$src/stores/ShoppingList";
 import IngredientCard from "../Ingredients/IngredientCard.svelte";
 import AddRecipeIngredient from "./AddRecipeIngredient.svelte";
@@ -8,17 +8,29 @@ import DeleteRecipeIngredient from "./DeleteRecipeIngredient.svelte";
 import UpdateRecipeIngredient from "./UpdateRecipeIngredient.svelte";
 import UpdateRecipeName from "./UpdateRecipeName.svelte";
 
-$: recipe = $recipes[$currRecipe]
 import FormRecipe from "./FormRecipe.svelte";
 import FormProcedure from "./FormProcedure.svelte";
 import DeleteProcedure from "./DeleteProcedure.svelte";
 import UpdateProcedure from "./UpdateProcedure.svelte";
+import LoadingScreen from "$src/layouts/_LoadingScreen.svelte";
     
 let updatingRecipeName = false;
 let AddingProcedure = false;
+
+$: recipe = $recipes[$currRecipe]
+
+let loading = false;
+currRecipe.subscribe(
+    async (v) => {
+        loading = true;
+        await getRecipeIngredients_byID(v);
+        await getRecipeProcedures_byID(v);
+        loading = false
+    }
+)
 </script>
 
-
+{#if $currRecipe}
 <section>
     <div class="container">
     <h3>
@@ -29,6 +41,7 @@ let AddingProcedure = false;
     </h3>
 
     <h4>Ingredients</h4>
+    
     <div class="Ingredients">
         {#each Object.keys($recipeIngredients) as ingredient_id}
             <div class="RecipeIngredient">
@@ -46,7 +59,7 @@ let AddingProcedure = false;
         <AddRecipeIngredient />
 
     </div>
-
+<!-- 
     <h4>Procedures</h4>
     <div class="Procedures">
         {#each $recipeProcedures as procedure, i}
@@ -61,18 +74,23 @@ let AddingProcedure = false;
             </div>
         {/each}
         <div class="AddProcedure" on:click={()=>AddingProcedure=true}>+</div>
+    </div> -->
     </div>
-    </div>
+
+    {#if loading}
+        <LoadingScreen />
+    {/if}
 </section>
 
 {#if updatingRecipeName}
-    <FormRecipe close={()=>updatingRecipeName=false} title="Rename Recipe" recipe={recipe} />
+    <FormRecipe close={()=>updatingRecipeName=false} title="Rename Recipe" recipe={recipe} request={(recipe) => updateRecipe(recipe.id, recipe)}/>
 {/if}
 
 {#if AddingProcedure}
     <FormProcedure close={()=>AddingProcedure=false} title="Add Procedure"/>
 {/if}
 
+{/if}
 <style>
     section {
         background-color: rgb(255, 208, 106);
@@ -81,6 +99,7 @@ let AddingProcedure = false;
         display: flex;
         justify-content: center;
         overflow: auto;
+        position: relative;
     }
 
     .container {
