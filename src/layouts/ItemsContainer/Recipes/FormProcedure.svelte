@@ -4,14 +4,13 @@
     export let procedure = {
         content: ""
     }
-    export let title = "Recipe"; 
+    export let title = "Procedure"; 
 </script>
 
 
 <PopoutMessage close={close} title={title}>
     <form>
-        <br/>
         <input type="text" bind:value={procedure.content} placeholder="Enter Content"/>
-        <input type=submit value="Rename" />
+        <input type=submit value="Submit" />
     </form>
 </PopoutMessage>

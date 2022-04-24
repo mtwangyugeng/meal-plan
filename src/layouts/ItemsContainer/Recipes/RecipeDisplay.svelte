@@ -9,11 +9,13 @@ import UpdateRecipeIngredient from "./UpdateRecipeIngredient.svelte";
 import UpdateRecipeName from "./UpdateRecipeName.svelte";
 
 $: recipe = $recipes[$currRecipe]
-import PopoutMessage from "$src/layouts/_PopoutMessage.svelte";
 import FormRecipe from "./FormRecipe.svelte";
+import FormProcedure from "./FormProcedure.svelte";
+import DeleteProcedure from "./DeleteProcedure.svelte";
+import UpdateProcedure from "./UpdateProcedure.svelte";
     
-let updating = false;
-
+let updatingRecipeName = false;
+let AddingProcedure = false;
 </script>
 
 
@@ -22,7 +24,7 @@ let updating = false;
     <h3>
         {recipe.name}
         <span class="UpdateName">
-            <UpdateRecipeName on:click={()=>updating=true} />
+            <UpdateRecipeName on:click={()=>updatingRecipeName=true} />
         </span>
     </h3>
 
@@ -49,15 +51,26 @@ let updating = false;
     <div class="Procedures">
         {#each $recipeProcedures as procedure, i}
             <div class="Procedure">
-                {i+1}. {procedure.content}
+                <div class="ProcedureLeft">
+                    {i+1}. {procedure.content}
+                </div>
+                <div class="ProcedureRight">
+                    <UpdateProcedure procedure = {procedure} />
+                    <DeleteProcedure />
+                </div>
             </div>
         {/each}
+        <div class="AddProcedure" on:click={()=>AddingProcedure=true}>+</div>
     </div>
     </div>
 </section>
 
-{#if updating}
-    <FormRecipe close={()=>updating=false} title="Rename Recipe" recipe={recipe} />
+{#if updatingRecipeName}
+    <FormRecipe close={()=>updatingRecipeName=false} title="Rename Recipe" recipe={recipe} />
+{/if}
+
+{#if AddingProcedure}
+    <FormProcedure close={()=>AddingProcedure=false} title="Add Procedure"/>
 {/if}
 
 <style>
@@ -67,6 +80,7 @@ let updating = false;
         padding: 10px;
         display: flex;
         justify-content: center;
+        overflow: auto;
     }
 
     .container {
@@ -119,6 +133,30 @@ let updating = false;
         margin: 10px;
         padding: 10px;
         border-radius: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
+    .ProcedureRight {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .AddProcedure {
+        margin: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        border: 3px dashed rgb(134, 134, 134);
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 85px;
+    }
+    .AddProcedure:hover {
+        background-color: rgb(209, 124, 12);
+        color: #fff;
+        transition: all 0.2s;
+    }
 </style>
