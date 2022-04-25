@@ -12,11 +12,11 @@ let shake = false;
 const handleSubmit = async () => {
     try{
         if (username.length <= 6) {
-            throw new Error("Username: must be 6 more characters.")
+            throw new Error("Username: must be 7 or more characters.")
         }
         if (creating) {
             if (password.length <= 6) {
-                throw new Error("Password: must be 6 more characters.")
+                throw new Error("Password: must be 7 or more characters.")
             }
             if(username && password === confirmPassword) {
                 loading = true;
