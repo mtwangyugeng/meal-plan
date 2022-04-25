@@ -24,6 +24,8 @@ const handleSubmit = async () => {
                 loading = false;
                 if(status == 201) {
                     close();
+                } else {
+                    throw new Error("Username already exists")
                 }
             } else {
                 throw new Error("Password and Confirm Password must match.")
@@ -36,7 +38,7 @@ const handleSubmit = async () => {
                 close();
             } else {
                 loading = false;
-                throw new Error("Something is wrong with the server...")
+                throw new Error("Check username and password")
             }
         }
     }catch (e) {
@@ -136,6 +138,7 @@ form {
     color: red;
     height: 20px;
     padding-left: 8px;
+    height: auto;
 }
 
 </style>

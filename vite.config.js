@@ -4,6 +4,7 @@ import { svelte } from '@sveltejs/vite-plugin-svelte'
 import path from 'path'
 //https://vitejs.dev/config/
 export default defineConfig({
+  base: '/meal-plan/',
   plugins: [svelte()],
   resolve: {
     alias: {
@@ -11,9 +12,9 @@ export default defineConfig({
     }
   },
   server: {
-    proxy: {
-      '/api': 'http://localhost:3001'
-    },
+    // proxy: {
+    //   '/api': 'http://localhost:3001'
+    // },
     cors: true
   }
 })
