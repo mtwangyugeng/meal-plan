@@ -1,6 +1,6 @@
 <script>
 import { ingredients } from "$src/stores/Ingredients";
-import { currRecipe, recipes, recipeIngredients, recipeProcedures, updateRecipe, getRecipeIngredients_byID, getRecipeProcedures_byID } from "$src/stores/Recipes";
+import { currRecipe, recipes, recipeIngredients, recipeProcedures, updateRecipe, getRecipeIngredients_byID, getRecipeProcedures_byID, createRecipeProcedure } from "$src/stores/Recipes";
 import { addListItem } from "$src/stores/ShoppingList";
 import IngredientCard from "../Ingredients/IngredientCard.svelte";
 import AddRecipeIngredient from "./AddRecipeIngredient.svelte";
@@ -13,6 +13,7 @@ import FormProcedure from "./FormProcedure.svelte";
 import DeleteProcedure from "./DeleteProcedure.svelte";
 import UpdateProcedure from "./UpdateProcedure.svelte";
 import LoadingScreen from "$src/layouts/_LoadingScreen.svelte";
+import { flip } from "svelte/animate";
     
 let updatingRecipeName = false;
 let AddingProcedure = false;
@@ -28,6 +29,7 @@ currRecipe.subscribe(
         loading = false
     }
 )
+
 </script>
 
 {#if $currRecipe}
@@ -43,38 +45,43 @@ currRecipe.subscribe(
     <h4>Ingredients</h4>
     
     <div class="Ingredients">
-        {#each Object.keys($recipeIngredients) as ingredient_id}
+        {#each Object.values($recipeIngredients) as recipeIngredient (recipeIngredient.id)} 
+            <span animate:flip="{{duration: 200}}">
             <div class="RecipeIngredient">
-                <IngredientCard {...$ingredients[ingredient_id]} request={()=>addListItem(ingredient_id)}/>
+                <IngredientCard {...$ingredients[recipeIngredient.ingredient_id]} request={()=>addListItem(recipeIngredient.ingredient_id)}/>
                 <div>
-                    x {$recipeIngredients[ingredient_id]['amount']}
+                    x {$recipeIngredients[recipeIngredient.id]['amount']}
                 </div>
                 
                 <div class="UpdateDelete">
-                    <UpdateRecipeIngredient recipeIngredient = {$recipeIngredients[ingredient_id]} />
-                    <DeleteRecipeIngredient />
+                    <UpdateRecipeIngredient recipeIngredient = {recipeIngredient} id = {recipeIngredient["id"]}/>
+                    <DeleteRecipeIngredient id = {recipeIngredient["id"]}/>
                 </div>
             </div>
+            </span>
         {/each}
         <AddRecipeIngredient />
 
     </div>
-<!-- 
+
     <h4>Procedures</h4>
     <div class="Procedures">
-        {#each $recipeProcedures as procedure, i}
+        {#each Object.values($recipeProcedures) as procedure, i (procedure.id)}
+            <span animate:flip="{{duration: 200}}">
             <div class="Procedure">
                 <div class="ProcedureLeft">
                     {i+1}. {procedure.content}
                 </div>
                 <div class="ProcedureRight">
-                    <UpdateProcedure procedure = {procedure} />
-                    <DeleteProcedure />
+                    <UpdateProcedure procedure = {procedure} id = {procedure.id}/>
+                    <DeleteProcedure id = {procedure.id}/>
                 </div>
             </div>
+            </span>
         {/each}
         <div class="AddProcedure" on:click={()=>AddingProcedure=true}>+</div>
-    </div> -->
+    </div>
+
     </div>
 
     {#if loading}
@@ -87,7 +94,7 @@ currRecipe.subscribe(
 {/if}
 
 {#if AddingProcedure}
-    <FormProcedure close={()=>AddingProcedure=false} title="Add Procedure"/>
+    <FormProcedure close={()=>AddingProcedure=false} title="Add Procedure" request={(procedure) => createRecipeProcedure(procedure)}/>
 {/if}
 
 {/if}

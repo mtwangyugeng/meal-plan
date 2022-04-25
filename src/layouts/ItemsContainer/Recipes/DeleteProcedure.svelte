@@ -1,11 +1,22 @@
 <script>
     import DeleteIcon from "$src/assets/DeleteIcon.svelte";
+import LoadingScreen from "$src/layouts/_LoadingScreen.svelte";
     import PopoutMessage from "$src/layouts/_PopoutMessage.svelte";
     import YesCancel from "$src/layouts/_YesCancel.svelte";
+import { deleteRecipeProcedure } from "$src/stores/Recipes";
     
     let deleting = false;
-    
-    const handleYes = () => {}
+    export let id;
+
+    let loading = false;
+    const handleYes = async () => {
+        loading = true;
+        const status = await deleteRecipeProcedure(id);
+        loading = false;
+        if (status < 400) {
+            deleting=false
+        }
+    }
     </script>
     
     <button class="DeleteIngredient" on:click={()=>deleting=true}>
@@ -18,6 +29,9 @@
             message = "Delete Procedure?"
             handleYes={handleYes} close={()=>deleting=false}
         />
+    {#if loading}
+        <LoadingScreen />
+    {/if}
     </PopoutMessage>
     {/if}
     

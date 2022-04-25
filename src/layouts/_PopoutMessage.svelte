@@ -73,7 +73,7 @@
         flex-direction: column;
     }
 
-    .PopoutMessage :global(input:not([type="submit"])) {
+    .PopoutMessage :global(input:not([type="submit"])), :global(textarea) {
         padding: 10px;
         border-radius: 10px;
 
@@ -82,7 +82,7 @@
         margin: 2px;
         font-size: 18px;
     }
-    .PopoutMessage :global(input:not([type="submit"])):focus {
+    .PopoutMessage :global(input:not([type="submit"])):focus, :global(textarea):focus {
         outline: 1px solid #f77e2e;
     }
 

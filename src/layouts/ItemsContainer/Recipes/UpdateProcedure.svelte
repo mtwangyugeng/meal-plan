@@ -1,10 +1,13 @@
 <script>
     import UpdateIcon from "$src/assets/UpdateIcon.svelte";
+import { updateRecipeProcedure } from "$src/stores/Recipes";
 import FormProcedure from "./FormProcedure.svelte";
     
     
     let updating = false;
     export let procedure;
+
+    export let id;
 </script>
     
     <button class="UpdateProcedure" on:click={()=>updating=true}>
@@ -12,7 +15,7 @@ import FormProcedure from "./FormProcedure.svelte";
     </button>
     
 {#if updating}
-    <FormProcedure close={()=>updating=false} procedure={procedure} title = "Update Procedure" />
+    <FormProcedure close={()=>updating=false} procedure={procedure} title = "Update Procedure" request={(procedure)=>updateRecipeProcedure(id, procedure)}/>
 {/if}
     <style>
         .UpdateProcedure {
