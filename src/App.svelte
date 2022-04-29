@@ -1,15 +1,17 @@
 <script>
-import MainContainer from "./layouts/MainContainer.svelte";
+import StarterPage from "./StarterPage.svelte";
 
 </script>
 
 <main>
-	<MainContainer />
+	<StarterPage />
 </main>
 
 <style>
   main {
 		height: 100vh;
+
+		font-family: Arial, Helvetica, sans-serif;
 	}
 
 	:global(*) {
