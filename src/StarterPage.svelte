@@ -45,6 +45,7 @@ const handleClick = (imp) => {
         justify-content: center;
         align-items: center;
         height: 100%;
+        width: 100%;
         color: white;
         background-color: orange;
         flex-direction: column;
