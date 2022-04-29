@@ -3,23 +3,43 @@ import MainContainer from "./layouts/MainContainer.svelte";
 import MobileContainer from "./mobile-layouts/MobileContainer.svelte";
 
 let mode = null;
+
+let moveUp = "";
+const handleClick = (imp) => {
+    return () => {
+        mode = imp;
+        moveUp = "MoveUp";
+        // setTimeout(() => moveUp = "", 500);
+    }
+}
 </script>
 
-{#if !mode}
-    <section>
-        <h1>Choose Your Device</h1>
-        <div>
-        <button on:click={()=>mode="desktop"}>Desktop</button>
-        <button on:click={()=>mode="mobile"}>Mobile</button>
+<section class={moveUp}>
+    <h1>Choose Your Device</h1>
+    <div>
+        <button on:click={handleClick("desktop")}>Desktop</button>
+        <button on:click={handleClick("mobile")}>Mobile</button>
     </div>
-    </section>
-{:else if mode === "desktop"}
+</section>
+{#if mode === "desktop"}
     <MainContainer />
 {:else if mode === "mobile"}
     <MobileContainer />
 {/if}
 
 <style>
+    .MoveUp {
+        animation: shake 0.5s;
+        /* When the animation is finished, start again */
+
+        animation-timing-function: ease;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes shake {
+        from {top: 0%}
+        to {top: -100%}
+    }
     section {
         display: flex;
         justify-content: center;
@@ -29,6 +49,9 @@ let mode = null;
         background-color: orange;
         flex-direction: column;
         flex-wrap: wrap;
+        position: fixed;
+
+        z-index: 100;
     }
 
     h1 {
