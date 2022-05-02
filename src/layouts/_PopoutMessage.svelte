@@ -2,6 +2,7 @@
     export let title = "";
     export let shake = false;
     export let close = null;
+    export let errorMessage = "";
 </script>
 
 <div class="PopoutMessage">
@@ -10,12 +11,20 @@
             <div class="cross" on:click={close}>x</div>
         {/if}
         <h2>{title}</h2>
+        <p class="Error">{errorMessage}</p>
+
     <slot />
     </div>
 </div>
 
 
 <style>
+    .Error {
+        color: red;
+        height: 20px;
+        padding-left: 8px;
+        height: auto;
+    }
     h2 {
         margin-bottom: 10px;
     }
