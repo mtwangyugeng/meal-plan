@@ -1,14 +1,17 @@
 <script>
 import LoadingScreen from "$src/layouts/_LoadingScreen.svelte";
-import PopoutMessage from "$src/layouts/_PopoutMessage.svelte";
 import { postSignup, postSignin } from "$src/stores/User";
 
+export let handleTitleChange;
+
 let creating = false;
-export let close;
+$: creating ? handleTitleChange("Create Account") : handleTitleChange("Log in")
 
 let loading = false;
-let errorMessage = "";
-let shake = false;
+
+export let handleError;
+export let handleSuccess;
+
 const handleSubmit = async () => {
     try{
         if (username.length <= 6) {
@@ -23,7 +26,7 @@ const handleSubmit = async () => {
                 const status = await postSignup({"username":username, "password":password})
                 loading = false;
                 if(status == 201) {
-                    close();
+                    handleSuccess();
                 } else {
                     throw new Error("Username already exists")
                 }
@@ -35,17 +38,15 @@ const handleSubmit = async () => {
             const status = await postSignin({"username":username, "password":password})
             loading = false;
             if(status == 202) {
-                close();
+                handleSuccess();
             } else {
                 loading = false;
                 throw new Error("Check username and password")
             }
         }
     }catch (e) {
-        errorMessage = e.message;
         loading = false;
-        shake = true;
-        setTimeout(()=>shake=false, 500);
+        handleError(e.message);
     }
 }
 
@@ -65,11 +66,7 @@ const handleConfirmPassword = (e) => {
 }
 </script>
 
-<PopoutMessage shake={shake}>
 <form on:submit|preventDefault={handleSubmit}>
-    <h2>{creating ? "Create Account": "Log in"}</h2>
-
-    <p class="Error">{errorMessage}</p>
 
     <input bind:value={username} placeholder="User Name" />
     <input on:input={handlePassword} type={passwordType} placeholder="Password" />
@@ -96,7 +93,6 @@ const handleConfirmPassword = (e) => {
 {#if loading}
     <LoadingScreen />
 {/if}
-</PopoutMessage>
 
 <style>
 h2 {
@@ -134,11 +130,6 @@ form {
     color: black;
 }
 
-.Error {
-    color: red;
-    height: 20px;
-    padding-left: 8px;
-    height: auto;
-}
+
 
 </style>

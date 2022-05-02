@@ -3,7 +3,7 @@ import { indexIngredient, ingredients } from "$src/stores/Ingredients";
 import { indexRecipe, recipes } from "$src/stores/Recipes";
 import { indexListItems, listItems } from "$src/stores/ShoppingList";
 import {token} from "$src/stores/User"
-import FormSignIn from "./FormSignIn.svelte";
+import PopSignIn from "./PopSignIn.svelte";
 import UserIcon from "./UserIcon.svelte";
 
    let signningIn = false;
@@ -29,7 +29,7 @@ $: if($token){
 </div>
 
 {#if signningIn == true || $token == ""}
-    <FormSignIn close={()=>signningIn=false} />
+    <PopSignIn close={()=>signningIn=false}/>
 {/if}
 
 
