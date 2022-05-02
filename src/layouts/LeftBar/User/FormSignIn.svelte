@@ -95,10 +95,7 @@ const handleConfirmPassword = (e) => {
 {/if}
 
 <style>
-h2 {
-    margin-top: 10px;
-    margin-bottom: 20px;
-}
+
 form {
     width: 400px;
 }
