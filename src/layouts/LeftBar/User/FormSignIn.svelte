@@ -96,10 +96,6 @@ const handleConfirmPassword = (e) => {
 
 <style>
 
-form {
-    width: 400px;
-}
-
 .Bottom {
     margin-top: 10px;
     display: flex;

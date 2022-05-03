@@ -80,6 +80,7 @@
     .PopoutMessage :global(form) {
         display: flex;
         flex-direction: column;
+        width: 400px;
     }
 
     .PopoutMessage :global(input:not([type="submit"])), :global(textarea) {
